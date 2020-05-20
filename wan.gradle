@@ -1,0 +1,61 @@
+ext {
+
+    android = [
+            compileSdkVersion: 29,
+            buildToolsVersion: "29.0.2",
+            applicationId    : "com.win.wan_android",
+            minSdkVersion    : 21,
+            targetSdkVersion : 29,
+            versionCode      : 1,
+            versionName      : "1.0",
+    ]
+
+    depsVersion = [
+            retrofitVersion             : '2.8.1',
+            converterGsonVersion        : '2.8.1',
+            gsonVersion                 : '2.8.6',
+            coroutinesVersion           : '1.3.6',
+            loggingInterceptorVersion   : '4.0.0',
+            lifecycleViewmodelKtxVersion: '2.2.0',
+            glideVersion                : '4.11.0',
+            bannerVersion               : '2.0.8',
+            refreshVersion              : '1.1.2',
+            pagingVersion               : '2.1.1',
+    ]
+
+    depsLibs = [
+
+            appcompat            : 'androidx.appcompat:appcompat:1.0.2',
+            coreKtx              : 'androidx.core:core-ktx:1.0.2',
+            material             : 'com.google.android.material:material:1.1.0',
+            constraintlayout     : 'androidx.constraintlayout:constraintlayout:1.1.3',
+            navigationFragment   : 'androidx.navigation:navigation-fragment:2.0.0',
+            navigationUi         : 'androidx.navigation:navigation-ui:2.0.0',
+            lifecycleExt         : 'androidx.lifecycle:lifecycle-extensions:2.2.0',
+            navigationFragmentKtx: 'androidx.navigation:navigation-fragment-ktx:2.0.0',
+            navigationUiKtx      : 'androidx.navigation:navigation-ui-ktx:2.0.0',
+            junit                : 'junit:junit:4.12',
+            extJunit             : 'androidx.test.ext:junit:1.1.0',
+            espressoCore         : 'androidx.test.espresso:espresso-core:3.1.1',
+
+            //网络请求
+            retrofit             : "com.squareup.retrofit2:retrofit:${depsVersion.retrofitVersion}",
+            converterGson        : "com.squareup.retrofit2:converter-gson:${depsVersion.converterGsonVersion}",
+            gson                 : "com.google.code.gson:gson:${depsVersion.gsonVersion}",
+            loggingInterceptor   : "com.squareup.okhttp3:logging-interceptor:${depsVersion.loggingInterceptorVersion}",
+
+            //使用协程
+            coroutines           : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${depsVersion.coroutinesVersion}",
+
+            //viewmodel中使用viewmodelScope
+            lifecycleViewmodelKtx: "androidx.lifecycle:lifecycle-viewmodel-ktx:${depsVersion.lifecycleViewmodelKtxVersion}",
+            paging               : "androidx.paging:paging-runtime:${depsVersion.pagingVersion}",
+
+            glide                : "com.github.bumptech.glide:glide:${depsVersion.glideVersion}",
+
+            banner               : "com.youth.banner:banner:${depsVersion.bannerVersion}",
+
+            SmartRefreshLayout   : "com.scwang.smartrefresh:SmartRefreshLayout:${depsVersion.refreshVersion}",
+    ]
+
+}

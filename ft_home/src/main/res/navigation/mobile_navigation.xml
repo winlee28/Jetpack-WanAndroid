@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.win.ft_home.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_tree"
+        android:name="com.win.ft_home.ui.dashboard.DashboardFragment"
+        android:label="@string/title_tree"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/navigation_project"
+        android:name="com.win.ft_home.ui.notifications.NotificationsFragment"
+        android:label="@string/title_project"
+        tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/navigation_navi"
+        android:name="com.win.ft_home.ui.notifications.NotificationsFragment"
+        android:label="@string/title_project"
+        tools:layout="@layout/fragment_notifications" />
+
+</navigation>

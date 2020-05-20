@@ -1,0 +1,50 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion rootProject.android.compileSdkVersion
+    buildToolsVersion rootProject.android.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.android.minSdkVersion
+        targetSdkVersion rootProject.android.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions{
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    compileOnly rootProject.depsLibs.appcompat
+    compileOnly rootProject.depsLibs.coreKtx
+
+    compileOnly rootProject.depsLibs.retrofit
+    compileOnly rootProject.depsLibs.converterGson
+    compileOnly rootProject.depsLibs.gson
+    compileOnly rootProject.depsLibs.loggingInterceptor
+
+    implementation rootProject.depsLibs.coroutines
+//    compileOnly 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.6'
+    compileOnly project(":lib_base")
+
+}

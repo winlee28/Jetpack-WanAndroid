@@ -1,0 +1,74 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion rootProject.android.compileSdkVersion
+    buildToolsVersion rootProject.android.buildToolsVersion
+    defaultConfig {
+        applicationId rootProject.android.applicationId
+        minSdkVersion rootProject.android.minSdkVersion
+        targetSdkVersion rootProject.android.targetSdkVersion
+        versionCode rootProject.android.versionCode
+        versionName rootProject.android.versionName
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions{
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dataBinding{
+        enabled = true
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation rootProject.depsLibs.appcompat
+    implementation rootProject.depsLibs.coreKtx
+    implementation rootProject.depsLibs.material
+    implementation rootProject.depsLibs.constraintlayout
+    implementation rootProject.depsLibs.navigationFragment
+    implementation rootProject.depsLibs.navigationUi
+    implementation rootProject.depsLibs.lifecycleExt
+    implementation rootProject.depsLibs.navigationFragmentKtx
+    implementation rootProject.depsLibs.navigationUiKtx
+    testImplementation rootProject.depsLibs.junit
+    androidTestImplementation rootProject.depsLibs.extJunit
+    androidTestImplementation rootProject.depsLibs.espressoCore
+
+
+    implementation rootProject.depsLibs.retrofit
+    implementation rootProject.depsLibs.converterGson
+    implementation rootProject.depsLibs.gson
+    implementation rootProject.depsLibs.loggingInterceptor
+
+    implementation rootProject.depsLibs.coroutines
+    implementation rootProject.depsLibs.paging
+
+    implementation rootProject.depsLibs.lifecycleViewmodelKtx
+    implementation rootProject.depsLibs.glide
+//    kapt 'com.github.bumptech.glide:compiler:4.10.0'
+    implementation rootProject.depsLibs.banner
+    implementation rootProject.depsLibs.SmartRefreshLayout
+
+
+//    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.6'
+
+    implementation project(":ft_home")
+
+    implementation project(":lib_base")
+    implementation project(":lib_net")
+    implementation project(":lib_image_loader")
+
+}

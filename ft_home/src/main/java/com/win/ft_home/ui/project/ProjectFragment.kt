@@ -33,6 +33,7 @@ class ProjectFragment : Fragment() {
         val datas = "GitHub is built for collaboration. Set up an organization to improve the way your team works together, and get access to more features.".split(" ")
 
 
+
         val fw1: TagFlowLayout = root.findViewById(R.id.flow1)
         val fw2: TagFlowLayout = root.findViewById(R.id.flow2)
 

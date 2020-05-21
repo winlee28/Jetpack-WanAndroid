@@ -13,7 +13,7 @@ import retrofit2.http.Path
 interface RequestCenter {
 
     @GET("/banner/json")
-    suspend fun getBanner(): BaseModel<List<Banner>>
+    suspend fun getBanner(): BaseModel<MutableList<Banner>>
 
     @GET("/article/list/{count}/json")
     suspend fun getHomeList(@Path("count") count: Int): BaseModel<DataFeed>

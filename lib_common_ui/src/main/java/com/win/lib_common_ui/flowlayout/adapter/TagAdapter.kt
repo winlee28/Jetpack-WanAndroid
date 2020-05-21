@@ -24,7 +24,7 @@ abstract class TagAdapter {
     }
 
     open fun toastForMultiple(context: Context) {
-        Toast.makeText(context, "已选择最大数量了", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(context, "已选择最大数量了", Toast.LENGTH_SHORT).show()
     }
 
     private lateinit var mListener: NotifyDataSetChangedListener

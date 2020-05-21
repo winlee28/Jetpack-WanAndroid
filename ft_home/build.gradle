@@ -43,13 +43,13 @@ dependencies {
 
     implementation rootProject.depsLibs.lifecycleExt
     compileOnly rootProject.depsLibs.paging
+    compileOnly rootProject.depsLibs.lifecycleViewmodelKtx
 
 
     compileOnly rootProject.depsLibs.navigationFragment
     compileOnly rootProject.depsLibs.navigationUi
-    compileOnly rootProject.depsLibs.navigationFragmentKtx
     compileOnly rootProject.depsLibs.navigationUiKtx
-    compileOnly rootProject.depsLibs.lifecycleViewmodelKtx
+    compileOnly rootProject.depsLibs.navigationFragmentKtx
     compileOnly rootProject.depsLibs.constraintlayout
 
     compileOnly rootProject.depsLibs.retrofit

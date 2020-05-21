@@ -18,8 +18,8 @@ import com.win.ft_home.R
 import com.win.ft_home.adapter.HomeListAdapter
 import com.win.ft_home.adapter.MyAdapter
 import com.win.ft_home.databinding.FragmentHomeBinding
-import com.win.ft_home.model.Banner
-import com.win.ft_home.model.DatasBean
+import com.win.ft_home.model.home.Banner
+import com.win.ft_home.model.home.DatasBean
 import com.win.lib_base.base.BaseFragment
 import com.win.lib_base.datasource.MutablePageKeyedDataSource
 import java.util.*

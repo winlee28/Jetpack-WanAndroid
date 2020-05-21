@@ -1,8 +1,8 @@
 package com.win.ft_home.api
 
-import com.win.ft_home.model.Banner
-import com.win.ft_home.model.DataFeed
-import com.win.ft_home.model.HomeFeed
+import com.win.ft_home.model.home.Banner
+import com.win.ft_home.model.home.DataFeed
+import com.win.ft_home.model.tree.TreeData
 import com.win.lib_net.model.BaseModel
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -15,8 +15,11 @@ interface RequestCenter {
     @GET("/banner/json")
     suspend fun getBanner(): BaseModel<List<Banner>>
 
-
     @GET("/article/list/{count}/json")
     suspend fun getHomeList(@Path("count") count: Int): BaseModel<DataFeed>
+
+    @GET("/tree/json")
+    suspend fun getTreeList(): BaseModel<MutableList<TreeData>>
+
 
 }

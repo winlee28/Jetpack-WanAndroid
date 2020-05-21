@@ -1,7 +1,7 @@
 package com.win.ft_home
 
 import android.text.TextUtils
-import com.win.ft_home.model.DatasBean
+import com.win.ft_home.model.home.DatasBean
 
 /**
  * Create by liwen on 2020-05-19

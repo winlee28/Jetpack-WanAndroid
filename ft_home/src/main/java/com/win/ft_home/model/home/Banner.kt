@@ -1,4 +1,4 @@
-package com.win.ft_home.model
+package com.win.ft_home.model.home
 
 data class Banner(val desc: String,
                   val id: Int,

@@ -62,6 +62,7 @@ dependencies {
 //    kapt 'com.github.bumptech.glide:compiler:4.10.0'
     compileOnly project(":lib_net")
     compileOnly project(":lib_base")
+    compileOnly project(":lib_common_ui")
     compileOnly project(":lib_image_loader")
 
 

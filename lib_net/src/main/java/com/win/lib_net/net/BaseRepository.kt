@@ -6,7 +6,7 @@ import com.win.lib_net.exception.ResultException
 import com.win.lib_net.model.BaseModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.coroutineScope
-import com.win.lib_net.model.Result
+import com.win.lib_net.model.NetResult
 
 open class BaseRepository {
 
@@ -15,13 +15,14 @@ open class BaseRepository {
     }
 
     suspend fun <T : Any> safeApiCall(
-        call: suspend () -> Result<T>
-    ): Result<T> {
+        call: suspend () -> NetResult<T>
+    ): NetResult<T> {
         return try {
             call()
         } catch (e: Exception) {
             //这里统一处理异常
-            Result.Error(DealException.handlerException(e))
+            e.printStackTrace()
+            NetResult.Error(DealException.handlerException(e))
         }
     }
 
@@ -29,11 +30,11 @@ open class BaseRepository {
         response: BaseModel<T>,
         successBlock: (suspend CoroutineScope.() -> Unit)? = null,
         errorBlock: (suspend CoroutineScope.() -> Unit)? = null
-    ): Result<T> {
+    ): NetResult<T> {
         return coroutineScope {
             if (response.errorCode == -1) {
                 errorBlock?.let { it() }
-                Result.Error(
+                NetResult.Error(
                     ResultException(
                         response.errorCode.toString(),
                         response.errorMsg
@@ -41,7 +42,7 @@ open class BaseRepository {
                 )
             } else {
                 successBlock?.let { it() }
-                Result.Success(response.data)
+                NetResult.Success(response.data)
             }
         }
     }

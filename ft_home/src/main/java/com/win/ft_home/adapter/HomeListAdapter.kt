@@ -1,7 +1,6 @@
 package com.win.ft_home.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,9 +8,7 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.win.ft_home.databinding.LayoutHomeListBinding
-import com.win.ft_home.model.DataFeed
-import com.win.ft_home.model.DatasBean
-import com.win.ft_home.model.HomeFeed
+import com.win.ft_home.model.home.DatasBean
 
 /**
  * Create by liwen on 2020-05-19

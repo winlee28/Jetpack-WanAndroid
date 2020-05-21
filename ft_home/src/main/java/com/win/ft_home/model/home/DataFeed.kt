@@ -1,4 +1,4 @@
-package com.win.ft_home.model
+package com.win.ft_home.model.home
 
 /**
  * Create by liwen on 2020-05-19

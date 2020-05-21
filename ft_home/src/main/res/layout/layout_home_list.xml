@@ -7,7 +7,7 @@
 
         <variable
             name="feed"
-            type="com.win.ft_home.model.DatasBean" />
+            type="com.win.ft_home.model.home.DatasBean" />
 
         <import type="com.win.ft_home.ConvertUtils" />
 

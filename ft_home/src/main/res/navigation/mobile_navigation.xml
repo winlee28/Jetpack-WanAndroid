@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_tree">
 
     <fragment
         android:id="@+id/navigation_home"
@@ -13,20 +13,20 @@
 
     <fragment
         android:id="@+id/navigation_tree"
-        android:name="com.win.ft_home.ui.dashboard.DashboardFragment"
+        android:name="com.win.ft_home.ui.tree.TreeFragment"
         android:label="@string/title_tree"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_tree" />
 
     <fragment
         android:id="@+id/navigation_project"
-        android:name="com.win.ft_home.ui.notifications.NotificationsFragment"
+        android:name="com.win.ft_home.ui.project.ProjectFragment"
         android:label="@string/title_project"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_project" />
 
     <fragment
         android:id="@+id/navigation_navi"
-        android:name="com.win.ft_home.ui.notifications.NotificationsFragment"
+        android:name="com.win.ft_home.ui.project.ProjectFragment"
         android:label="@string/title_project"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_project" />
 
 </navigation>

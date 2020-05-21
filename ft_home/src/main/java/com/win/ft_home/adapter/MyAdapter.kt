@@ -3,8 +3,7 @@ package com.win.ft_home.adapter
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.win.ft_home.model.Banner
+import com.win.ft_home.model.home.Banner
 import com.win.lib_image_loader.app.ImageLoaderManager
 import com.youth.banner.adapter.BannerAdapter
 

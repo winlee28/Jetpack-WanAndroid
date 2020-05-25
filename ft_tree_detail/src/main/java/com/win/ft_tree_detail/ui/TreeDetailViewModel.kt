@@ -1,24 +1,21 @@
 package com.win.ft_tree_detail.ui
 
-import android.widget.Toast
-import androidx.lifecycle.ViewModel
+//import com.win.lib_base.App
 import androidx.lifecycle.viewModelScope
 import androidx.paging.DataSource
 import androidx.paging.PageKeyedDataSource
 import com.win.ft_tree_detail.model.TreeDetailItem
-import com.win.lib_base.App
 import com.win.lib_base.base.AbsListViewModel
 import com.win.lib_net.model.NetResult
 import kotlinx.coroutines.launch
+import org.koin.core.KoinComponent
 import java.util.*
 
 /**
  * Create by liwen on 2020-05-21
  */
-class TreeDetailViewModel : AbsListViewModel<TreeDetailItem>() {
-
-
-    private val dataRepos = TreeDetailRepository()
+class TreeDetailViewModel(private val dataRepos: TreeDetailRepository) :
+    AbsListViewModel<TreeDetailItem>(), KoinComponent {
 
     override fun createDataSource(): DataSource<Int, TreeDetailItem> {
         return object : PageKeyedDataSource<Int, TreeDetailItem>() {
@@ -56,7 +53,7 @@ class TreeDetailViewModel : AbsListViewModel<TreeDetailItem>() {
             if (result is NetResult.Success) {
                 callback.onResult(result.data.datas, null, 1)
             } else if (result is NetResult.Error) {
-                Toast.makeText(App.CONTEXT, result.exception.msg, Toast.LENGTH_SHORT).show()
+//                Toast.makeText(App.CONTEXT, result.exception.msg, Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -71,7 +68,7 @@ class TreeDetailViewModel : AbsListViewModel<TreeDetailItem>() {
             if (result is NetResult.Success) {
                 callback.onResult(result.data.datas, key + 1)
             } else if (result is NetResult.Error) {
-                Toast.makeText(App.CONTEXT, result.exception.msg, Toast.LENGTH_SHORT).show()
+//                Toast.makeText(App.CONTEXT, result.exception.msg, Toast.LENGTH_SHORT).show()
             }
         }
 

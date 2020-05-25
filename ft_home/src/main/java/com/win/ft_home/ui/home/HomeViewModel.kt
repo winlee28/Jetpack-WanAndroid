@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PageKeyedDataSource
 import com.win.ft_home.model.home.Banner
 import com.win.ft_home.model.home.DatasBean
-import com.win.lib_base.App
+//import com.win.lib_base.App
 import com.win.lib_net.model.NetResult
 import kotlinx.coroutines.launch
 
@@ -28,7 +28,7 @@ class HomeViewModel : ViewModel() {
             if (banner is NetResult.Success) {
                 bannerLiveData.postValue(banner.data)
             } else if (banner is NetResult.Error) {
-                Toast.makeText(App.CONTEXT, banner.exception.msg, Toast.LENGTH_LONG).show()
+//                Toast.makeText(App.CONTEXT, banner.exception.msg, Toast.LENGTH_LONG).show()
             }
         }
 
@@ -44,7 +44,7 @@ class HomeViewModel : ViewModel() {
             if (homeFeed is NetResult.Success) {
                 callback.onResult(homeFeed.data.datas, null, 1)
             } else if (homeFeed is NetResult.Error) {
-                Toast.makeText(App.CONTEXT, homeFeed.exception.msg, Toast.LENGTH_LONG).show()
+//                Toast.makeText(App.CONTEXT, homeFeed.exception.msg, Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -62,7 +62,7 @@ class HomeViewModel : ViewModel() {
             if (homeFeed is NetResult.Success) {
                 callback.onResult(homeFeed.data.datas, key)
             } else if (homeFeed is NetResult.Error) {
-                Toast.makeText(App.CONTEXT, homeFeed.exception.msg, Toast.LENGTH_LONG).show()
+//                Toast.makeText(App.CONTEXT, homeFeed.exception.msg, Toast.LENGTH_LONG).show()
             }
         }
     }

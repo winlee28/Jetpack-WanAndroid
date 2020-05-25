@@ -19,6 +19,10 @@ abstract class AbsListViewModel<T> : ViewModel() {
         return pageData
     }
 
+    fun getDataSource(): DataSource<Int, T>? {
+        return dataSource
+    }
+
     init {
 
         val config = PagedList.Config.Builder()

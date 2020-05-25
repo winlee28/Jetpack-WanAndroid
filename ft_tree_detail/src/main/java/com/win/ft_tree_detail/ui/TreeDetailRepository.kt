@@ -11,6 +11,7 @@ import com.win.lib_net.net.RetrofitClient
  */
 class TreeDetailRepository : BaseRepository() {
 
+
     suspend fun getTreeDetailList(count: Int, cid: Int): NetResult<TreeDetailModel> {
 
         return safeApiCall(call = { requestTreeDetailLsit(count, cid) })
@@ -20,5 +21,4 @@ class TreeDetailRepository : BaseRepository() {
         executeResponse(
             RetrofitClient.getService(ReqeustCenter::class.java).getTreeDetailList(count, cid)
         )
-
 }

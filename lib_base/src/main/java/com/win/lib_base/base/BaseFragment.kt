@@ -9,7 +9,9 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 import java.lang.reflect.ParameterizedType
+import kotlin.reflect.KClass
 
 
 /**
@@ -45,8 +47,13 @@ abstract class BaseFragment<T : ViewModel, M : ViewDataBinding> : Fragment() {
     }
 
     private fun initViewModel() {
-        val types = (this.javaClass.genericSuperclass as ParameterizedType).actualTypeArguments
-        mViewModel = ViewModelProvider(this).get(types[0] as Class<T>)
+//        val types = (this.javaClass.genericSuperclass as ParameterizedType).actualTypeArguments
+//        mViewModel = ViewModelProvider(this).get(types[0] as Class<T>)
+
+        val clazz =
+            this.javaClass.kotlin.supertypes[0].arguments[0].type!!.classifier!! as KClass<T>
+        mViewModel = getViewModel<T>(clazz)
+
     }
 
 

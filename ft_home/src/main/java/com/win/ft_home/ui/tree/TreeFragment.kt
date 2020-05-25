@@ -28,7 +28,7 @@ class TreeFragment : BaseFragment<TreeViewModel, FragmentTreeBinding>() {
 
         //请求数据
         mViewModel.getTreeDataLiveData().observe(this, Observer<MutableList<TreeData>> {
-            mAdapter = TreeListAdapter(activity!!, it)
+            mAdapter = TreeListAdapter(requireActivity(), it)
             mRecyclerView.adapter = mAdapter
         })
 

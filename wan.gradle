@@ -3,7 +3,8 @@ ext {
     android = [
             compileSdkVersion: 29,
             buildToolsVersion: "29.0.2",
-            applicationId    : "com.win.wan_android",
+//            applicationId    : "com.win.wan_android",
+            applicationId    : "com.ppdai.terminal",
             minSdkVersion    : 21,
             targetSdkVersion : 29,
             versionCode      : 1,
@@ -21,6 +22,7 @@ ext {
             bannerVersion               : '2.0.8',
             refreshVersion              : '1.1.2',
             pagingVersion               : '2.1.1',
+            koinVersion                 : '2.1.5',
     ]
 
     depsLibs = [
@@ -56,6 +58,16 @@ ext {
             banner               : "com.youth.banner:banner:${depsVersion.bannerVersion}",
 
             SmartRefreshLayout   : "com.scwang.smartrefresh:SmartRefreshLayout:${depsVersion.refreshVersion}",
+
+
+            // Koin AndroidX Scope feature
+            koinScop             : "org.koin:koin-androidx-scope:${depsVersion.koinVersion}",
+
+            // Koin AndroidX ViewModel feature
+            KoinViewModel        : "org.koin:koin-androidx-viewmodel:${depsVersion.koinVersion}",
+
+            // Koin AndroidX Fragment Factory (unstable version)
+            koinFragmet         : "org.koin:koin-androidx-fragment:${depsVersion.koinVersion}",
     ]
 
 }

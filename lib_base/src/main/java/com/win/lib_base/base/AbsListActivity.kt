@@ -1,11 +1,11 @@
 package com.win.lib_base.base
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.paging.PagedList
 import androidx.paging.PagedListAdapter
@@ -17,7 +17,10 @@ import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
 import com.win.lib_base.R
 import com.win.lib_base.databinding.ActivityAbsBinding
+import org.koin.androidx.viewmodel.ext.android.getViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.lang.reflect.ParameterizedType
+import kotlin.reflect.KClass
 
 /**
  * Create by liwen on 2020-05-21
@@ -28,9 +31,9 @@ abstract class AbsListActivity<T, V : AbsListViewModel<T>> : AppCompatActivity()
     OnLoadMoreListener,
     OnRefreshListener {
 
-    private lateinit var mAdapter: PagedListAdapter<T, RecyclerView.ViewHolder>
+    lateinit var mAdapter: PagedListAdapter<T, RecyclerView.ViewHolder>
 
-    private lateinit var mViewModel: V
+    lateinit var mViewModel: V
 
     private lateinit var mRefreshLayout: SmartRefreshLayout
     private lateinit var mRecycleView: RecyclerView
@@ -69,18 +72,37 @@ abstract class AbsListActivity<T, V : AbsListViewModel<T>> : AppCompatActivity()
 
 
     private fun initViewModel() {
-        val types = (this.javaClass.genericSuperclass as ParameterizedType).actualTypeArguments
-        mViewModel = ViewModelProvider(this).get(types[1] as Class<V>)
+
+        //java
+//        val types = (this.javaClass.genericSuperclass as ParameterizedType).actualTypeArguments
+//        val clazz = types[1] as Class<V>
+//        mViewModel = ViewModelProvider(this).get(clazz)
+
+
+        //kotlin + koin
+        val clazz =
+            this.javaClass.kotlin.supertypes[0].arguments[1].type!!.classifier!! as KClass<V>
+        mViewModel = getViewModel<V>(clazz)
+
 
         mViewModel.getPageData().observe(this, Observer {
             submitPageList(it)
         })
-
     }
 
 
     fun submitPageList(pagedList: PagedList<T>) {
         mAdapter.submitList(pagedList)
+    }
+
+    fun finishRefresh() {
+
+        val state = mRefreshLayout.state
+        if (state.isOpening && state.isHeader) {
+            mRefreshLayout.finishRefresh()
+        } else if (state.isOpening && state.isFooter) {
+            mRefreshLayout.finishLoadMore()
+        }
     }
 
     abstract fun generateAdapter(): PagedListAdapter<T, RecyclerView.ViewHolder>

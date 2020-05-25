@@ -57,6 +57,9 @@ dependencies {
     compileOnly rootProject.depsLibs.banner
     compileOnly rootProject.depsLibs.glide
 
+    implementation rootProject.depsLibs.koinScop
+    implementation rootProject.depsLibs.KoinViewModel
+    implementation rootProject.depsLibs.koinFragmet
 
 
 //    kapt 'com.github.bumptech.glide:compiler:4.10.0'

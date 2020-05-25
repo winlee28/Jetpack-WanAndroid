@@ -45,6 +45,12 @@ dependencies {
     compileOnly rootProject.depsLibs.lifecycleViewmodelKtx
     compileOnly rootProject.depsLibs.SmartRefreshLayout
 
+    implementation rootProject.depsLibs.koinScop
+    implementation rootProject.depsLibs.KoinViewModel
+    implementation rootProject.depsLibs.koinFragmet
+
+    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+
     compileOnly rootProject.depsLibs.retrofit
     compileOnly project(":lib_net")
     compileOnly project(":lib_base")

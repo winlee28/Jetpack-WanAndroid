@@ -52,7 +52,7 @@ abstract class BaseFragment<T : ViewModel, M : ViewDataBinding> : Fragment() {
 
         val clazz =
             this.javaClass.kotlin.supertypes[0].arguments[0].type!!.classifier!! as KClass<T>
-        mViewModel = getViewModel<T>(clazz)
+        mViewModel = getViewModel<T>(clazz) //koin 注入
 
     }
 

@@ -1,17 +1,16 @@
 package com.win.ft_home.ui.home
 
-import android.widget.Toast
+//import com.win.lib_base.App
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PageKeyedDataSource
 import com.win.ft_home.model.home.Banner
 import com.win.ft_home.model.home.DatasBean
-//import com.win.lib_base.App
 import com.win.lib_net.model.NetResult
 import kotlinx.coroutines.launch
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
 
     private val bannerLiveData = MutableLiveData<List<Banner>>()
 
@@ -19,7 +18,6 @@ class HomeViewModel : ViewModel() {
         return bannerLiveData
     }
 
-    private val homeRepository = HomeRepository()
 
     fun getBanner() {
 
@@ -54,7 +52,6 @@ class HomeViewModel : ViewModel() {
         key: Int,
         callback: PageKeyedDataSource.LoadCallback<Int, DatasBean>
     ) {
-
 
 
         viewModelScope.launch {

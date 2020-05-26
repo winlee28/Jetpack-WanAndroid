@@ -10,7 +10,8 @@ data class DatasBean(
     val author: String,
     val shareUser: String,
     val id: Int,
-    val chapterName: String
+    val chapterName: String,
+    val link: String
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

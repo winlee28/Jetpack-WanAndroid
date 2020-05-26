@@ -24,6 +24,7 @@ class App : Application() {
         Log.e("liwen", "app onCreate")
 
 
+
         startKoin {
 
             androidContext(this@App)

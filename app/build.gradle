@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.alibaba.arouter'
 
 android {
     compileSdkVersion rootProject.android.compileSdkVersion
@@ -12,6 +13,11 @@ android {
         targetSdkVersion rootProject.android.targetSdkVersion
         versionCode rootProject.android.versionCode
         versionName rootProject.android.versionName
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
     buildTypes {
         release {
@@ -20,12 +26,12 @@ android {
         }
     }
 
-    compileOptions{
+    compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    dataBinding{
+    dataBinding {
         enabled = true
     }
 
@@ -67,7 +73,8 @@ dependencies {
     implementation rootProject.depsLibs.KoinViewModel
     implementation rootProject.depsLibs.koinFragmet
 
-//    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.6'
+    implementation 'com.alibaba:arouter-api:1.5.0'
+    kapt 'com.alibaba:arouter-compiler:1.2.2'
 
     implementation project(":ft_home")
     implementation project(":ft_tree_detail")

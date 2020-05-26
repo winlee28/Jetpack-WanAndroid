@@ -24,7 +24,7 @@ class WebViewActivity : AppCompatActivity() {
         const val WEB_VIEW_TITLE = "web_view_title"
 
 
-        fun goToPage(context: Context, title: String, url: String) {
+        fun start(context: Context, title: String, url: String) {
             val intent = Intent(context, WebViewActivity::class.java)
             intent.putExtra(WEB_VIEW_TITLE, title)
             intent.putExtra(WEB_VIEW_URL, url)

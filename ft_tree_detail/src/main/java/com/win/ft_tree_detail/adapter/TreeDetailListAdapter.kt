@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.win.ft_tree_detail.R
 import com.win.ft_tree_detail.databinding.TreeDetailListItemBinding
+import com.win.lib_base.base.service.webview.warp.WebViewWarpService
 import com.win.lib_base.model.DatasBean
-import com.win.lib_webview.WebViewActivity
 
 /**
  * Create by liwen on 2020-05-22
@@ -65,7 +65,7 @@ class TreeDetailListAdapter(context: Context) :
             mBinding.item = item
 
             mBinding.itemParent.setOnClickListener {
-                WebViewActivity.start(mContext, item.title, item.link)
+                WebViewWarpService.instance.start(mContext, item.title, item.link)
             }
 
         }

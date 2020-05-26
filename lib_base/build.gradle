@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'com.alibaba.arouter'
 
 android {
     compileSdkVersion 29
@@ -17,6 +18,12 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 
     buildTypes {
@@ -44,6 +51,10 @@ dependencies {
     implementation rootProject.depsLibs.lifecycleExt
     compileOnly rootProject.depsLibs.retrofit
     compileOnly rootProject.depsLibs.converterGson
+
+
+    compileOnly 'com.alibaba:arouter-api:1.5.0'
+    kapt 'com.alibaba:arouter-compiler:1.2.2'
 
     compileOnly rootProject.depsLibs.constraintlayout
 

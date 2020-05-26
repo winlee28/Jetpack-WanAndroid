@@ -62,6 +62,5 @@ dependencies {
 
     compileOnly rootProject.depsLibs.retrofit
     compileOnly project(":lib_net")
-    compileOnly project(":lib_webview")
     compileOnly project(":lib_base")
 }

@@ -9,6 +9,8 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
+import com.alibaba.android.arouter.facade.annotation.Autowired
+import com.alibaba.android.arouter.launcher.ARouter
 import kotlinx.android.synthetic.main.activity_webview.*
 
 /**
@@ -16,18 +18,18 @@ import kotlinx.android.synthetic.main.activity_webview.*
  */
 class WebViewActivity : AppCompatActivity() {
 
-    private var mTitle: String? = null
-    private var mUrl: String? = null
+    @Autowired
+    lateinit var title: String
+
+    @Autowired
+    lateinit var url: String
 
     companion object {
-        const val WEB_VIEW_URL = "web_view_url"
-        const val WEB_VIEW_TITLE = "web_view_title"
-
 
         fun start(context: Context, title: String, url: String) {
             val intent = Intent(context, WebViewActivity::class.java)
-            intent.putExtra(WEB_VIEW_TITLE, title)
-            intent.putExtra(WEB_VIEW_URL, url)
+            intent.putExtra("title", title)
+            intent.putExtra("url", url)
             context.startActivity(intent)
         }
 
@@ -36,18 +38,19 @@ class WebViewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        ARouter.getInstance().inject(this)
+
         StatusBarKt.fitSystemBar(this)
 
         setContentView(R.layout.activity_webview)
 
-        initIntent()
         initActionBar()
         initWebView()
 
     }
 
     private fun initActionBar() {
-        mTvTitle.text = mTitle
+        mTvTitle.text = title
         mIvBack.setOnClickListener {
             finish()
         }
@@ -76,15 +79,8 @@ class WebViewActivity : AppCompatActivity() {
             }
         }
 
-        mWebView.loadUrl(mUrl)
+        mWebView.loadUrl(url)
 
     }
-
-    private fun initIntent() {
-        val intent = intent
-        mUrl = intent.getStringExtra(WEB_VIEW_URL)
-        mTitle = intent.getStringExtra(WEB_VIEW_TITLE)
-    }
-
 
 }

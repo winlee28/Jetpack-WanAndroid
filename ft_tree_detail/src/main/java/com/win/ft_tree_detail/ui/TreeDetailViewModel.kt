@@ -19,6 +19,12 @@ import java.util.*
 class TreeDetailViewModel(private val dataRepos: TreeDetailRepository) :
     AbsListViewModel<DatasBean>() {
 
+    private var mCid: Int = 0
+
+    fun setCid(cid: Int) {
+        mCid = cid
+    }
+
     override fun createDataSource(): DataSource<Int, DatasBean> {
         return object : PageKeyedDataSource<Int, DatasBean>() {
             override fun loadInitial(
@@ -51,7 +57,7 @@ class TreeDetailViewModel(private val dataRepos: TreeDetailRepository) :
     ) {
 
         viewModelScope.launch {
-            val result = dataRepos.getTreeDetailList(key, 60)
+            val result = dataRepos.getTreeDetailList(key, mCid)
             if (result is NetResult.Success) {
                 callback.onResult(result.data.datas, null, 1)
             } else if (result is NetResult.Error) {
@@ -66,7 +72,7 @@ class TreeDetailViewModel(private val dataRepos: TreeDetailRepository) :
         callback: PageKeyedDataSource.LoadCallback<Int, DatasBean>
     ) {
         viewModelScope.launch {
-            val result = dataRepos.getTreeDetailList(key, 60)
+            val result = dataRepos.getTreeDetailList(key, mCid)
             if (result is NetResult.Success) {
                 callback.onResult(result.data.datas, key + 1)
             } else if (result is NetResult.Error) {

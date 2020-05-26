@@ -45,6 +45,7 @@ dependencies {
     compileOnly rootProject.depsLibs.retrofit
     compileOnly rootProject.depsLibs.converterGson
 
+    compileOnly rootProject.depsLibs.constraintlayout
 
     implementation rootProject.depsLibs.koinScop
     implementation rootProject.depsLibs.KoinViewModel

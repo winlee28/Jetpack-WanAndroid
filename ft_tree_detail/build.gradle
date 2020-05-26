@@ -49,9 +49,8 @@ dependencies {
     implementation rootProject.depsLibs.KoinViewModel
     implementation rootProject.depsLibs.koinFragmet
 
-    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
-
     compileOnly rootProject.depsLibs.retrofit
     compileOnly project(":lib_net")
+    compileOnly project(":lib_webview")
     compileOnly project(":lib_base")
 }

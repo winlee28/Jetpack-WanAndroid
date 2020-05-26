@@ -8,7 +8,7 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.win.ft_home.databinding.LayoutHomeListBinding
-import com.win.ft_home.model.home.DatasBean
+import com.win.lib_base.model.DatasBean
 
 /**
  * Create by liwen on 2020-05-19

@@ -1,2 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.win.lib_webview" />
+    package="com.win.lib_webview" >
+
+    <application>
+        <activity android:name=".WebViewActivity" />
+    </application>
+</manifest>

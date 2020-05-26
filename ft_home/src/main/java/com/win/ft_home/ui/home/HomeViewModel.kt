@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PageKeyedDataSource
 import com.win.ft_home.model.home.Banner
-import com.win.ft_home.model.home.DatasBean
+import com.win.lib_base.model.DatasBean
 import com.win.lib_net.model.NetResult
 import kotlinx.coroutines.launch
 

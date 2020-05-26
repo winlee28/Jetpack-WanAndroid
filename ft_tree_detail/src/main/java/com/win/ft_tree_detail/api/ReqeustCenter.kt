@@ -15,13 +15,6 @@ interface ReqeustCenter {
         @Query("cid") cid: Int
     ): BaseModel<TreeDetailModel>
 
-    @POST(value = "/sdk/hackness/selfie_hack_detect")
-    suspend fun testLinkface(
-        @Body id: String,
-        @Body secret: String,
-        @Body es:String,
-        @Body file: ByteArray
-    ): BaseModel<Any>
 
 
 }

@@ -74,6 +74,7 @@ dependencies {
 
     implementation project(":lib_base")
     implementation project(":lib_net")
+    implementation project(":lib_webview")
     implementation project(":lib_common_ui")
     implementation project(":lib_image_loader")
 

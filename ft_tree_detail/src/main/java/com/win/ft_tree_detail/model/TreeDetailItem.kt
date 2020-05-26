@@ -9,10 +9,10 @@ data class TreeDetailItem(
     val superChapterName: String,
     val link: String,
     val shareUser: String,
-    val niceShareDate: String,
-    val title: String
+    val niceDate: String,
+    val title: String,
+    val author: String
 ) {
-
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
@@ -24,8 +24,9 @@ data class TreeDetailItem(
         if (superChapterName != other.superChapterName) return false
         if (link != other.link) return false
         if (shareUser != other.shareUser) return false
-        if (niceShareDate != other.niceShareDate) return false
+        if (niceDate != other.niceDate) return false
         if (title != other.title) return false
+        if (author != other.author) return false
 
         return true
     }
@@ -36,8 +37,9 @@ data class TreeDetailItem(
         result = 31 * result + superChapterName.hashCode()
         result = 31 * result + link.hashCode()
         result = 31 * result + shareUser.hashCode()
-        result = 31 * result + niceShareDate.hashCode()
+        result = 31 * result + niceDate.hashCode()
         result = 31 * result + title.hashCode()
+        result = 31 * result + author.hashCode()
         return result
     }
 }

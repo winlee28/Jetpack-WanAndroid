@@ -17,6 +17,7 @@ import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
 import com.win.lib_base.R
 import com.win.lib_base.databinding.ActivityAbsBinding
+import com.win.lib_base.utils.StatusBarKt
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.lang.reflect.ParameterizedType
@@ -38,14 +39,17 @@ abstract class AbsListActivity<T, V : AbsListViewModel<T>> : AppCompatActivity()
     private lateinit var mRefreshLayout: SmartRefreshLayout
     private lateinit var mRecycleView: RecyclerView
 
-    private lateinit var mBinding: ActivityAbsBinding
+    lateinit var mBinding: ActivityAbsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        StatusBarKt.fitSystemBar(this)
+
         mBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_abs)
 
+        initActionBar()
 
         mRefreshLayout = mBinding.refreshLayout
         mRecycleView = mBinding.recycleView
@@ -69,6 +73,8 @@ abstract class AbsListActivity<T, V : AbsListViewModel<T>> : AppCompatActivity()
         initViewModel()
 
     }
+
+    abstract fun initActionBar()
 
 
     private fun initViewModel() {

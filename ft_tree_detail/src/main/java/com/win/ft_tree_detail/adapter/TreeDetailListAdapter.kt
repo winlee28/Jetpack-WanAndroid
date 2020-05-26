@@ -11,23 +11,25 @@ import androidx.recyclerview.widget.RecyclerView
 import com.win.ft_tree_detail.R
 import com.win.ft_tree_detail.databinding.TreeDetailListItemBinding
 import com.win.ft_tree_detail.model.TreeDetailItem
+import com.win.lib_base.model.DatasBean
+import com.win.lib_webview.WebViewActivity
 
 /**
  * Create by liwen on 2020-05-22
  */
 class TreeDetailListAdapter(context: Context) :
-    PagedListAdapter<TreeDetailItem, TreeDetailListAdapter.ViewHolder>(
-        object : DiffUtil.ItemCallback<TreeDetailItem>() {
+    PagedListAdapter<DatasBean, TreeDetailListAdapter.ViewHolder>(
+        object : DiffUtil.ItemCallback<DatasBean>() {
             override fun areItemsTheSame(
-                oldItem: TreeDetailItem,
-                newItem: TreeDetailItem
+                oldItem: DatasBean,
+                newItem: DatasBean
             ): Boolean {
                 return oldItem == newItem
             }
 
             override fun areContentsTheSame(
-                oldItem: TreeDetailItem,
-                newItem: TreeDetailItem
+                oldItem: DatasBean,
+                newItem: DatasBean
             ): Boolean {
                 return oldItem.id == newItem.id
             }
@@ -50,18 +52,23 @@ class TreeDetailListAdapter(context: Context) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.setData(getItem(position))
+        holder.setData(getItem(position)!!)
     }
 
-    class ViewHolder(
+    inner class ViewHolder(
         itemView: View,
         binding: TreeDetailListItemBinding
     ) : RecyclerView.ViewHolder(itemView) {
 
         private val mBinding = binding
 
-        fun setData(item: TreeDetailItem?) {
-            mBinding.treeDetailItem = item
+        fun setData(item: DatasBean) {
+            mBinding.item = item
+//
+//            mBinding.itemParent.setOnClickListener {
+//                WebViewActivity.goToPage(mContext, item.title, item.link)
+//            }
+
         }
 
     }

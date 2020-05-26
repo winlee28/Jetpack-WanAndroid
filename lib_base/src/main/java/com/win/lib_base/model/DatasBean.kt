@@ -1,4 +1,4 @@
-package com.win.ft_home.model.home
+package com.win.lib_base.model
 
 /**
  * Create by liwen on 2020-05-19
@@ -9,7 +9,8 @@ data class DatasBean(
     val desc: String,
     val author: String,
     val shareUser: String,
-    val id: Int
+    val id: Int,
+    val chapterName: String
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -23,6 +24,7 @@ data class DatasBean(
         if (author != other.author) return false
         if (shareUser != other.shareUser) return false
         if (id != other.id) return false
+        if (chapterName != other.chapterName) return false
 
         return true
     }
@@ -34,6 +36,7 @@ data class DatasBean(
         result = 31 * result + author.hashCode()
         result = 31 * result + shareUser.hashCode()
         result = 31 * result + id
+        result = 31 * result + chapterName.hashCode()
         return result
     }
 }

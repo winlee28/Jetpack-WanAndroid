@@ -23,13 +23,13 @@ class TabItemViewModel(private val repository: NavigationRepository) :
     }
 
     override fun createDataSource(): DataSource<Int, NavigationItemSub> {
-        Log.e("liwen","=====>>>>>>>>>")
+
         return object : PageKeyedDataSource<Int, NavigationItemSub>() {
             override fun loadInitial(
                 params: LoadInitialParams<Int>,
                 callback: LoadInitialCallback<Int, NavigationItemSub>
             ) {
-                getTabPageData(0, callback)
+                getTabPageData(1, callback)
             }
 
             override fun loadAfter(
@@ -70,7 +70,7 @@ class TabItemViewModel(private val repository: NavigationRepository) :
         viewModelScope.launch {
             val data = repository.getTabItemPageData(count, mId)
             if (data is NetResult.Success) {
-                callback.onResult(data.data.datas, 0, 1)
+                callback.onResult(data.data.datas, 0, 2)
             } else if (data is NetResult.Error) {
                 //Toast.makeText(, "", Toast.LENGTH_SHORT).show();
             }

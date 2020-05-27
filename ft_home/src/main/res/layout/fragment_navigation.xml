@@ -17,13 +17,10 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             app:tabGravity="center"
-            app:tabIndicator="@color/tab_indicator_color"
             app:tabIndicatorFullWidth="false"
             app:tabIndicatorHeight="2dp"
             app:tabInlineLabel="true"
             app:tabMode="scrollable"
-            app:tabSelectedTextColor="@color/tab_text_selected_color"
-            app:tabTextColor="@color/tab_text_default_color"
             app:tabUnboundedRipple="true" />
 
         <androidx.viewpager2.widget.ViewPager2

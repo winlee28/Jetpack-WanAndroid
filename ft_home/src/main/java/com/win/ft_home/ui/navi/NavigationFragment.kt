@@ -2,6 +2,8 @@ package com.win.ft_home.ui.navi
 
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.graphics.Typeface
+import android.provider.CalendarContract
 import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -36,6 +38,29 @@ class NavigationFragment : BaseFragment<NavigationViewModel, FragmentNavigationB
         mViewPager = mViewBinding.viewPager
         mTabLayout = mViewBinding.tabLayout
 
+        //xml中设置IndicatorColor 和 textcolor 都无效果 待解？
+//        mTabLayout.setSelectedTabIndicatorColor(resources.getColor(R.color.tab_text_selected_color))
+
+        mTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                val customView = tab?.customView as TextView
+                customView.textSize = 14f
+                customView.typeface = Typeface.DEFAULT
+            }
+
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                val customView = tab?.customView as TextView
+                customView.textSize = 16f
+                customView.typeface = Typeface.DEFAULT_BOLD
+            }
+
+        })
+
+
         mViewPager.offscreenPageLimit = ViewPager2.OFFSCREEN_PAGE_LIMIT_DEFAULT
 
         mViewPager.adapter = object : FragmentStateAdapter(childFragmentManager, lifecycle) {
@@ -67,7 +92,6 @@ class NavigationFragment : BaseFragment<NavigationViewModel, FragmentNavigationB
 
     private fun createItemFragment(id: Int): Fragment {
         return TabItemFragment.newInstance(id)
-//        return Fragment()
     }
 
     private fun createTabView(position: Int): View {
@@ -76,16 +100,16 @@ class NavigationFragment : BaseFragment<NavigationViewModel, FragmentNavigationB
             val item = mData!![position]
             val textView = TextView(requireContext())
 
-            val states = arrayOfNulls<IntArray>(2)
-            states[0] = intArrayOf(android.R.attr.state_selected)
-            states[1] = intArrayOf()
-
-            val colors = intArrayOf(
-                resources.getColor(R.color.tab_text_selected_color),
-                resources.getColor(R.color.tab_text_default_color)
-            )
-            val stateList = ColorStateList(states, colors)
-            textView.setTextColor(stateList)
+//            val states = arrayOfNulls<IntArray>(2)
+//            states[0] = intArrayOf(android.R.attr.state_selected)
+//            states[1] = intArrayOf()
+//
+//            val colors = intArrayOf(
+//                resources.getColor(R.color.tab_text_selected_color),
+//                resources.getColor(R.color.tab_text_default_color)
+//            )
+//            val stateList = ColorStateList(states, colors)
+//            textView.setTextColor(stateList)
 
             textView.text = item.name.replace("&amp;", " & ")
             return textView

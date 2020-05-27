@@ -7,8 +7,8 @@ import com.win.ft_home.model.home.Banner
 import com.win.lib_image_loader.app.ImageLoaderManager
 import com.youth.banner.adapter.BannerAdapter
 
-class MyAdapter(mDatas: List<Banner>)//设置数据，也可以调用banner提供的方法,或者自己在adapter中实现
-    : BannerAdapter<Banner, MyAdapter.BannerViewHolder>(mDatas) {
+class HomeBannerAdapter(mDatas: List<Banner>)//设置数据，也可以调用banner提供的方法,或者自己在adapter中实现
+    : BannerAdapter<Banner, HomeBannerAdapter.BannerViewHolder>(mDatas) {
 
     //创建ViewHolder，可以用viewType这个字段来区分不同的ViewHolder
     override fun onCreateHolder(parent: ViewGroup, viewType: Int): BannerViewHolder {

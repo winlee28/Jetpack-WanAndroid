@@ -45,7 +45,7 @@ dependencies {
     compileOnly rootProject.depsLibs.paging
     compileOnly rootProject.depsLibs.lifecycleViewmodelKtx
 
-
+    compileOnly rootProject.depsLibs.material
     compileOnly rootProject.depsLibs.navigationFragment
     compileOnly rootProject.depsLibs.navigationUi
     compileOnly rootProject.depsLibs.navigationUiKtx
@@ -61,6 +61,7 @@ dependencies {
     implementation rootProject.depsLibs.KoinViewModel
     implementation rootProject.depsLibs.koinFragmet
 
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
 
 //    kapt 'com.github.bumptech.glide:compiler:4.10.0'
     compileOnly project(":lib_net")

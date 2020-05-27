@@ -2,8 +2,8 @@ package com.win.lib_webview.service
 
 import android.content.Context
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.win.lib_base.base.service.ConstantsPath
-import com.win.lib_base.base.service.webview.WebViewService
+import com.win.lib_base.service.ConstantsPath
+import com.win.lib_base.service.webview.WebViewService
 import com.win.lib_webview.WebViewActivity
 
 /**

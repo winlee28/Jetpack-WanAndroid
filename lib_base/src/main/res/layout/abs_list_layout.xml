@@ -15,6 +15,7 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/actionBar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginLeft="8dp"

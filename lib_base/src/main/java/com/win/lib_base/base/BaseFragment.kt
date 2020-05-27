@@ -8,9 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import org.koin.androidx.viewmodel.ext.android.getViewModel
-import java.lang.reflect.ParameterizedType
 import kotlin.reflect.KClass
 
 
@@ -42,8 +40,8 @@ abstract class BaseFragment<T : ViewModel, M : ViewDataBinding> : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViewModel()
-        initView()
         initData()
+        initView()
     }
 
     private fun initViewModel() {

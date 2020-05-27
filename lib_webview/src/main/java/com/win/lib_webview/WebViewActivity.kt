@@ -3,11 +3,9 @@ package com.win.lib_webview
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.net.http.SslError
 import android.os.Bundle
-import android.webkit.WebChromeClient
-import android.webkit.WebResourceRequest
-import android.webkit.WebView
-import android.webkit.WebViewClient
+import android.webkit.*
 import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.launcher.ARouter
@@ -62,6 +60,8 @@ class WebViewActivity : AppCompatActivity() {
         settings.allowContentAccess = true
         settings.domStorageEnabled = true
         settings.allowFileAccess = true
+        settings.javaScriptEnabled = true
+
 
         mWebView.addJavascriptInterface(this, "wan")
 
@@ -70,6 +70,15 @@ class WebViewActivity : AppCompatActivity() {
         }
 
         mWebView.webViewClient = object : WebViewClient() {
+
+            override fun onReceivedSslError(
+                view: WebView?,
+                handler: SslErrorHandler?,
+                error: SslError?
+            ) {
+                handler?.proceed()
+            }
+
             override fun shouldOverrideUrlLoading(
                 view: WebView?,
                 request: WebResourceRequest?

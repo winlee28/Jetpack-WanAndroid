@@ -1,4 +1,4 @@
-package com.win.lib_base.base.service
+package com.win.lib_base.service
 
 /**
  * Create by liwen on 2020/5/26

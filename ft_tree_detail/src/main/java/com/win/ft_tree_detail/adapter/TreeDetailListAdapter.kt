@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.win.ft_tree_detail.R
 import com.win.ft_tree_detail.databinding.TreeDetailListItemBinding
-import com.win.lib_base.base.service.webview.warp.WebViewWarpService
+import com.win.lib_base.service.webview.warp.WebViewWarpService
 import com.win.lib_base.model.DatasBean
 
 /**

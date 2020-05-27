@@ -1,5 +1,6 @@
 package com.win.lib_base.base
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.DataSource
@@ -32,8 +33,8 @@ abstract class AbsListViewModel<T> : ViewModel() {
 
         val factory = object : DataSource.Factory<Int, T>() {
             override fun create(): DataSource<Int, T> {
-
-                if (dataSource == null && dataSource?.isInvalid != false) {
+                //使用 || 或者会导致刷新的时候 create会被不停的调用
+                if (dataSource == null || dataSource?.isInvalid != false) {
                     dataSource = createDataSource()
                 }
                 return dataSource!!

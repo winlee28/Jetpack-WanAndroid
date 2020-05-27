@@ -1,0 +1,99 @@
+package com.win.ft_home.ui.navi
+
+import android.content.res.ColorStateList
+import android.graphics.Color
+import android.view.View
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
+import com.win.ft_home.R
+import com.win.ft_home.databinding.FragmentNavigationBinding
+import com.win.ft_home.model.navigation.NavigationModel
+import com.win.lib_base.base.BaseFragment
+
+class NavigationFragment : BaseFragment<NavigationViewModel, FragmentNavigationBinding>() {
+
+    private var mData: MutableList<NavigationModel>? = null
+    private lateinit var mediator: TabLayoutMediator
+    private lateinit var mTabLayout: TabLayout
+    private lateinit var mViewPager: ViewPager2
+
+    override fun getLayoutResId(): Int = R.layout.fragment_navigation
+
+    override fun initData() {
+        mViewModel.getTabData().observe(this, Observer {
+            mData = it
+            initView()
+        })
+    }
+
+    override fun initView() {
+
+        mViewPager = mViewBinding.viewPager
+        mTabLayout = mViewBinding.tabLayout
+
+        mViewPager.offscreenPageLimit = ViewPager2.OFFSCREEN_PAGE_LIMIT_DEFAULT
+
+        mViewPager.adapter = object : FragmentStateAdapter(childFragmentManager, lifecycle) {
+            override fun getItemCount(): Int {
+                if (mData != null && mData!!.size > 0) {
+                    return mData!!.size
+                }
+                return 0
+            }
+
+            override fun createFragment(position: Int): Fragment {
+                val item = mData!![position]
+                return createItemFragment(item.id)
+            }
+
+        }
+
+        mediator = TabLayoutMediator(
+            mTabLayout,
+            mViewPager,
+            true,
+            TabLayoutMediator.TabConfigurationStrategy { tab, position -> //创建tab
+                tab.customView = createTabView(position)
+            })
+
+        mediator.attach()
+
+    }
+
+    private fun createItemFragment(id: Int): Fragment {
+        return TabItemFragment.newInstance(id)
+//        return Fragment()
+    }
+
+    private fun createTabView(position: Int): View {
+
+        if (mData != null && mData!!.size > 0) {
+            val item = mData!![position]
+            val textView = TextView(requireContext())
+
+            val states = arrayOfNulls<IntArray>(2)
+            states[0] = intArrayOf(android.R.attr.state_selected)
+            states[1] = intArrayOf()
+
+            val colors = intArrayOf(
+                resources.getColor(R.color.tab_text_selected_color),
+                resources.getColor(R.color.tab_text_default_color)
+            )
+            val stateList = ColorStateList(states, colors)
+            textView.setTextColor(stateList)
+
+            textView.text = item.name.replace("&amp;", " & ")
+            return textView
+        }
+
+        return TextView(requireContext())
+
+    }
+
+
+}

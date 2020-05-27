@@ -16,7 +16,7 @@ import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
 import com.win.ft_home.R
 import com.win.ft_home.adapter.HomeListAdapter
-import com.win.ft_home.adapter.MyAdapter
+import com.win.ft_home.adapter.HomeBannerAdapter
 import com.win.ft_home.databinding.FragmentHomeBinding
 import com.win.ft_home.model.home.Banner
 import com.win.lib_base.model.DatasBean
@@ -126,14 +126,12 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(), OnRefre
         mViewModel.getBannerLiveData()
             .observe(viewLifecycleOwner,
                 Observer<List<Banner>> {
-                    mViewBinding.banner.adapter = MyAdapter(it)
+                    mViewBinding.banner.adapter = HomeBannerAdapter(it)
                 })
 
     }
 
     override fun onLoadMore(refreshLayout: RefreshLayout) {
-
-        Log.e("liwen","=====onLoadMore=====")
 
         //当加载更多的时候返回了空数据 需要手动接管数据加载否则paging框架将不会继续加载数据
 
@@ -144,7 +142,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(), OnRefre
         }
 
         val key = currentList.size / 20
-        Log.e("liwen","=====onLoadMore===${key}==")
+
         mViewModel.getHomeList(
             key,
             key + 1,

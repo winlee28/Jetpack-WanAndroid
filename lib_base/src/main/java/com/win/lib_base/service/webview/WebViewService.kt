@@ -1,4 +1,4 @@
-package com.win.lib_base.base.service.webview
+package com.win.lib_base.service.webview
 
 import android.content.Context
 import com.alibaba.android.arouter.facade.template.IProvider

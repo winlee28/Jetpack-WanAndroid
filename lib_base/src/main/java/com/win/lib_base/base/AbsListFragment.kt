@@ -1,9 +1,12 @@
 package com.win.lib_base.base
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.paging.PagedList
 import androidx.paging.PagedListAdapter
@@ -15,18 +18,14 @@ import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
 import com.win.lib_base.R
 import com.win.lib_base.databinding.AbsListLayoutBinding
-import com.win.lib_base.utils.StatusBarKt
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import kotlin.reflect.KClass
 
 /**
- * Create by liwen on 2020-05-21
- *
- * 作为列表布局的父类
+ * Create by liwen on 2020/5/26
  */
-abstract class AbsListActivity<T, V : AbsListViewModel<T>> : AppCompatActivity(),
-    OnLoadMoreListener,
-    OnRefreshListener {
+abstract class AbsListFragment<T, V : AbsListViewModel<T>> : Fragment(), OnRefreshListener,
+    OnLoadMoreListener {
 
     lateinit var mAdapter: PagedListAdapter<T, RecyclerView.ViewHolder>
 
@@ -34,26 +33,34 @@ abstract class AbsListActivity<T, V : AbsListViewModel<T>> : AppCompatActivity()
 
     private lateinit var mRefreshLayout: SmartRefreshLayout
     private lateinit var mRecycleView: RecyclerView
+    private lateinit var mBinding: AbsListLayoutBinding
 
-    lateinit var mBinding: AbsListLayoutBinding
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        StatusBarKt.fitSystemBar(this)
-
-        mBinding =
-            DataBindingUtil.setContentView(this, R.layout.abs_list_layout)
-
-        initActionBar()
+        mBinding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.abs_list_layout,
+            container,
+            false
+        )
 
         mRefreshLayout = mBinding.refreshLayout
         mRecycleView = mBinding.recycleView
 
-        mRecycleView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        mRecycleView.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
-        val decoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
-        decoration.setDrawable(ContextCompat.getDrawable(this, R.drawable.home_list_divier)!!)
+        val decoration = DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
+        decoration.setDrawable(
+            ContextCompat.getDrawable(
+                requireContext(),
+                R.drawable.home_list_divier
+            )!!
+        )
         mRecycleView.addItemDecoration(decoration)
 
         mAdapter = generateAdapter()
@@ -65,21 +72,23 @@ abstract class AbsListActivity<T, V : AbsListViewModel<T>> : AppCompatActivity()
         mRefreshLayout.setOnRefreshListener(this)
         mRefreshLayout.setOnLoadMoreListener(this)
 
-
         initViewModel()
+
+        onCreateViewAfter()
+
+        return mBinding.root
+    }
+
+    open fun onCreateViewAfter() {
 
     }
 
-    abstract fun initActionBar()
+    fun hiddenActionBar() {
+        mBinding.actionBar.visibility = View.GONE
+    }
 
 
     private fun initViewModel() {
-
-        //java
-//        val types = (this.javaClass.genericSuperclass as ParameterizedType).actualTypeArguments
-//        val clazz = types[1] as Class<V>
-//        mViewModel = ViewModelProvider(this).get(clazz)
-
 
         //kotlin + koin
         val clazz =
@@ -87,7 +96,7 @@ abstract class AbsListActivity<T, V : AbsListViewModel<T>> : AppCompatActivity()
         mViewModel = getViewModel<V>(clazz)
 
 
-        mViewModel.getPageData().observe(this, Observer {
+        mViewModel.getPageData().observe(viewLifecycleOwner, Observer {
             submitPageList(it)
         })
     }

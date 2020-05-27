@@ -119,5 +119,9 @@ class NavigationFragment : BaseFragment<NavigationViewModel, FragmentNavigationB
 
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        mediator.detach()
+    }
 
 }

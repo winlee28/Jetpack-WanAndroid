@@ -1,12 +1,16 @@
 package com.win.ft_home.adapter
 
 import android.content.Context
+import android.graphics.ImageDecoder
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DecodeFormat
+import com.bumptech.glide.request.RequestOptions
 import com.win.ft_home.databinding.NavigationPageLayoutBinding
 import com.win.ft_home.model.navigation.NavigationItemSub
 import com.win.lib_image_loader.app.ImageLoaderManager
@@ -64,6 +68,13 @@ class NavigationPageAdapter constructor(context: Context) :
             mBinding.context = mContext
             ImageLoaderManager.getInstance()
                 .displayImageForView(mBinding.pic, item!!.envelopePic)
+
+//            Glide.with(mContext).asBitmap()
+//                .load(item!!.envelopePic)
+//                .apply(RequestOptions().format(DecodeFormat.PREFER_RGB_565))
+//                .override(120, 200)
+//                .into(mBinding.pic)
+
 
         }
     }

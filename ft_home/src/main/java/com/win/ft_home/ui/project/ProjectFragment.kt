@@ -1,65 +1,124 @@
 package com.win.ft_home.ui.project
 
-import android.os.Bundle
-import android.view.LayoutInflater
+import android.graphics.Typeface
 import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import com.google.android.material.internal.FlowLayout
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import com.win.ft_home.R
-import com.win.lib_common_ui.flowlayout.TagFlowLayout
-import com.win.lib_common_ui.flowlayout.adapter.TagAdapter
+import com.win.ft_home.databinding.FragmentProjectBinding
+import com.win.ft_home.model.navigation.NavigationModel
+import com.win.lib_base.base.BaseFragment
 
-class ProjectFragment : Fragment() {
+class ProjectFragment : BaseFragment<ProjectViewModel, FragmentProjectBinding>() {
 
-    private lateinit var notificationsViewModel: ProjectViewModel
+    private var mData: MutableList<NavigationModel>? = null
+    private lateinit var mediator: TabLayoutMediator
+    private lateinit var mTabLayout: TabLayout
+    private lateinit var mViewPager: ViewPager2
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        notificationsViewModel =
-            ViewModelProviders.of(this).get(ProjectViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_project, container, false)
-        val textView: TextView = root.findViewById(R.id.text_notifications)
-        notificationsViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+    override fun getLayoutResId(): Int = R.layout.fragment_project
+
+    override fun initData() {
+        mViewModel.getTabData().observe(this, Observer {
+            mData = it
+            initView()
+        })
+    }
+
+    override fun initView() {
+
+        mViewPager = mViewBinding.viewPager
+        mTabLayout = mViewBinding.tabLayout
+
+        //xml中设置IndicatorColor 和 textcolor 都无效果 待解？
+//        mTabLayout.setSelectedTabIndicatorColor(resources.getColor(R.color.tab_text_selected_color))
+
+        mTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                val customView = tab?.customView as TextView
+                customView.textSize = 14f
+                customView.typeface = Typeface.DEFAULT
+            }
+
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                val customView = tab?.customView as TextView
+                customView.textSize = 16f
+                customView.typeface = Typeface.DEFAULT_BOLD
+            }
+
         })
 
-        val datas = "GitHub is built for collaboration. Set up an organization to improve the way your team works together, and get access to more features.".split(" ")
 
+        mViewPager.offscreenPageLimit = ViewPager2.OFFSCREEN_PAGE_LIMIT_DEFAULT
 
-
-        val fw1: TagFlowLayout = root.findViewById(R.id.flow1)
-        val fw2: TagFlowLayout = root.findViewById(R.id.flow2)
-
-        val adapter = object : TagAdapter() {
+        mViewPager.adapter = object : FragmentStateAdapter(childFragmentManager, lifecycle) {
             override fun getItemCount(): Int {
-                return datas.size
+                if (mData != null && mData!!.size > 0) {
+                    return mData!!.size
+                }
+                return 0
             }
 
-            override fun createView(
-                inflater: LayoutInflater,
-                parent: ViewGroup,
-                position: Int
-            ): View {
-                return inflater.inflate(R.layout.flow_layout_item, parent, false)
-            }
-
-            override fun bindView(view: View, position: Int) {
-                (view as TextView).text = datas[position]
+            override fun createFragment(position: Int): Fragment {
+                val item = mData!![position]
+                return createItemFragment(item.id)
             }
 
         }
 
-        fw1.setAdapter(adapter)
-        fw2.setAdapter(adapter)
+        mediator = TabLayoutMediator(
+            mTabLayout,
+            mViewPager,
+            true,
+            TabLayoutMediator.TabConfigurationStrategy { tab, position -> //创建tab
+                tab.customView = createTabView(position)
+            })
 
+        mediator.attach()
 
-        return root
     }
+
+    private fun createItemFragment(id: Int): Fragment {
+        return TabItemFragment.newInstance(id)
+    }
+
+    private fun createTabView(position: Int): View {
+
+        if (mData != null && mData!!.size > 0) {
+            val item = mData!![position]
+            val textView = TextView(requireContext())
+
+//            val states = arrayOfNulls<IntArray>(2)
+//            states[0] = intArrayOf(android.R.attr.state_selected)
+//            states[1] = intArrayOf()
+//
+//            val colors = intArrayOf(
+//                resources.getColor(R.color.tab_text_selected_color),
+//                resources.getColor(R.color.tab_text_default_color)
+//            )
+//            val stateList = ColorStateList(states, colors)
+//            textView.setTextColor(stateList)
+
+            textView.text = item.name.replace("&amp;", " & ")
+            return textView
+        }
+
+        return TextView(requireContext())
+
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        mediator.detach()
+    }
+
 }

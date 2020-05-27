@@ -1,16 +1,12 @@
-package com.win.ft_home.ui.navi
+package com.win.ft_home.ui.project
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.paging.PageKeyedDataSource
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.scwang.smartrefresh.layout.api.RefreshLayout
-import com.win.ft_home.adapter.NavigationPageAdapter
+import com.win.ft_home.adapter.PeojectPageAdapter
 import com.win.ft_home.model.navigation.NavigationItemSub
-import com.win.ft_home.model.navigation.NavigationModel
 import com.win.lib_base.base.AbsListFragment
 import com.win.lib_base.datasource.MutablePageKeyedDataSource
 
@@ -40,7 +36,7 @@ class TabItemFragment : AbsListFragment<NavigationItemSub, TabItemViewModel>() {
 
 
     override fun generateAdapter(): PagedListAdapter<NavigationItemSub, RecyclerView.ViewHolder> {
-        return NavigationPageAdapter(requireContext()) as PagedListAdapter<NavigationItemSub, RecyclerView.ViewHolder>
+        return PeojectPageAdapter(requireContext()) as PagedListAdapter<NavigationItemSub, RecyclerView.ViewHolder>
     }
 
     override fun onRefresh(refreshLayout: RefreshLayout) {

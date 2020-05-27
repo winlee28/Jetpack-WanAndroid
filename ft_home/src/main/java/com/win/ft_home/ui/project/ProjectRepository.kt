@@ -1,4 +1,4 @@
-package com.win.ft_home.ui.navi
+package com.win.ft_home.ui.project
 
 import com.win.ft_home.api.RequestCenter
 import com.win.ft_home.model.navigation.NavigationItem
@@ -10,7 +10,7 @@ import com.win.lib_net.net.RetrofitClient
 /**
  * Create by liwen on 2020/5/26
  */
-class NavigationRepository : BaseRepository() {
+class ProjectRepository : BaseRepository() {
 
 
     suspend fun getTabData(): NetResult<MutableList<NavigationModel>> {

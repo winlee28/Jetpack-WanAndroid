@@ -1,6 +1,5 @@
-package com.win.ft_home.ui.navi
+package com.win.ft_home.ui.project
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import androidx.paging.DataSource
 import androidx.paging.PageKeyedDataSource
@@ -13,7 +12,7 @@ import java.util.*
 /**
  * Create by liwen on 2020/5/26
  */
-class TabItemViewModel(private val repository: NavigationRepository) :
+class TabItemViewModel(private val repository: ProjectRepository) :
     AbsListViewModel<NavigationItemSub>() {
 
     private var mId: Int = 0

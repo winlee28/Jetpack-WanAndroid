@@ -19,14 +19,14 @@
 
     <fragment
         android:id="@+id/navigation_project"
-        android:name="com.win.ft_home.ui.project.ProjectFragment"
+        android:name="com.win.ft_home.ui.navi.NavigationFragment"
         android:label="@string/title_project"
-        tools:layout="@layout/fragment_project" />
+        tools:layout="@layout/fragment_navigation" />
 
     <fragment
         android:id="@+id/navigation_navi"
-        android:name="com.win.ft_home.ui.navi.NavigationFragment"
+        android:name="com.win.ft_home.ui.project.ProjectFragment"
         android:label="@string/title_navi"
-        tools:layout="@layout/fragment_navigation" />
+        tools:layout="@layout/fragment_project" />
 
 </navigation>

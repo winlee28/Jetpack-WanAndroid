@@ -1,16 +1,12 @@
 package com.win.ft_home.adapter
 
 import android.content.Context
-import android.graphics.ImageDecoder
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.DecodeFormat
-import com.bumptech.glide.request.RequestOptions
 import com.win.ft_home.databinding.NavigationPageLayoutBinding
 import com.win.ft_home.model.navigation.NavigationItemSub
 import com.win.lib_image_loader.app.ImageLoaderManager
@@ -18,8 +14,8 @@ import com.win.lib_image_loader.app.ImageLoaderManager
 /**
  * Create by liwen on 2020/5/26
  */
-class NavigationPageAdapter constructor(context: Context) :
-    PagedListAdapter<NavigationItemSub, NavigationPageAdapter.ViewHolder>(
+class PeojectPageAdapter constructor(context: Context) :
+    PagedListAdapter<NavigationItemSub, PeojectPageAdapter.ViewHolder>(
         object : DiffUtil.ItemCallback<NavigationItemSub>() {
             override fun areItemsTheSame(
                 oldItem: NavigationItemSub,

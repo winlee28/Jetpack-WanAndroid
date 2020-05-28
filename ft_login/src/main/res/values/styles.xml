@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="editTextControl" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">#999999</item>
+        <item name="colorControlActivated">#2f76fb</item>
+    </style>
+</resources>

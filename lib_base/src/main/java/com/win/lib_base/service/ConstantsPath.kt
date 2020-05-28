@@ -14,4 +14,9 @@ object ConstantsPath {
      * webview
      */
     const val WEB_VIEW_SERVICE_PATH = "/webView/webView_service"
+
+    /**
+     * 登录页面
+     */
+    const val LOGIN_SERVICE_PATH = "/login/login_service"
 }

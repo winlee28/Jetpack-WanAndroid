@@ -1,7 +1,9 @@
 package com.win.ft_home.di
 
+import com.win.ft_home.ui.main.MainViewModel
 import com.win.ft_home.ui.home.HomeRepository
 import com.win.ft_home.ui.home.HomeViewModel
+import com.win.ft_home.ui.mine.MineViewModel
 import com.win.ft_home.ui.project.ProjectRepository
 import com.win.ft_home.ui.project.ProjectViewModel
 import com.win.ft_home.ui.project.TabItemViewModel
@@ -22,9 +24,11 @@ val treeRepoModule = module {
 
 
 val treeViewModelModule = module {
+    viewModel { MainViewModel() }
     viewModel { TreeViewModel(get()) }
     viewModel { HomeViewModel(get()) }
     viewModel { ProjectViewModel(get()) }
     viewModel { TabItemViewModel(get()) }
+    viewModel { MineViewModel() }
 }
 

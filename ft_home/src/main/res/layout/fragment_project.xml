@@ -18,6 +18,7 @@
             android:layout_height="50dp"
             app:tabGravity="center"
             app:tabIndicatorFullWidth="false"
+            app:tabIndicatorColor="@color/tab_indicator_color"
             app:tabIndicatorHeight="2dp"
             app:tabInlineLabel="true"
             app:tabMode="scrollable"

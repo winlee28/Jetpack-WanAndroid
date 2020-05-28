@@ -88,7 +88,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(), OnRefre
                         params: LoadParams<Int>,
                         callback: LoadCallback<Int, DatasBean>
                     ) {
-                        Log.e("liwen","=====loadAfter=====")
                         mViewModel.getHomeList(params.key, params.key + 1, callback)
                     }
 

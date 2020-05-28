@@ -76,8 +76,11 @@ dependencies {
     implementation 'com.alibaba:arouter-api:1.5.0'
     kapt 'com.alibaba:arouter-compiler:1.2.2'
 
+    implementation 'com.tencent:mmkv-static:1.1.1'
+
     implementation project(":ft_home")
     implementation project(":ft_tree_detail")
+    implementation project(":ft_login")
 
     implementation project(":lib_base")
     implementation project(":lib_net")

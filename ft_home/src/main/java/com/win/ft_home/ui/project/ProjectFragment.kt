@@ -35,9 +35,6 @@ class ProjectFragment : BaseFragment<ProjectViewModel, FragmentProjectBinding>()
         mViewPager = mViewBinding.viewPager
         mTabLayout = mViewBinding.tabLayout
 
-        //xml中设置IndicatorColor 和 textcolor 都无效果 待解？
-//        mTabLayout.setSelectedTabIndicatorColor(resources.getColor(R.color.tab_text_selected_color))
-
         mTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabReselected(tab: TabLayout.Tab?) {
 

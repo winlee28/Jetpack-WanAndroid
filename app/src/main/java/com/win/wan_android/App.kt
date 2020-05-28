@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.util.Log
 import com.alibaba.android.arouter.launcher.ARouter
+import com.tencent.mmkv.MMKV
 import com.win.wan_android.di.allModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -22,10 +23,9 @@ class App : Application() {
         super.onCreate()
 
         CONTEXT = applicationContext
-        Log.e("liwen", "app onCreate")
 
         ARouter.init(this)
-
+        MMKV.initialize(this)
         startKoin {
 
             androidContext(this@App)

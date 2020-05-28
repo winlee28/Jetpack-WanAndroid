@@ -6,6 +6,7 @@ import com.win.ft_home.R
 import com.win.ft_home.databinding.FragmentMineBinding
 import com.win.lib_base.base.BaseFragment
 import com.win.lib_base.service.login.warp.LoginServiceImplWrap
+import com.win.lib_image_loader.app.ImageLoaderManager
 
 class MineFragment : BaseFragment<MineViewModel, FragmentMineBinding>() {
 

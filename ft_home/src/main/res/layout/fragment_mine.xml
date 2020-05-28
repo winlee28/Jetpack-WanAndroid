@@ -23,30 +23,21 @@
             android:id="@+id/top"
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:background="#999"
+            android:background="#3999"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/avatar"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginLeft="50dp"
-                android:src="@color/design_default_color_primary"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="40dp"
                 android:text="@{user==null?@string/mine_login:user.username}"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/avatar"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="李小文" />
 
@@ -70,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="16dp"
-            android:background="#999"
+            android:background="#3999"
             android:orientation="horizontal"
             app:layout_constraintTop_toBottomOf="@id/top">
 
@@ -97,7 +88,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="1dp"
-            android:background="#999"
+            android:background="#3999"
             android:orientation="horizontal"
             app:layout_constraintTop_toBottomOf="@id/favorite">
 
@@ -106,7 +97,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="16dp"
                 android:gravity="start|center_vertical"
-                android:text="我的收藏"
+                android:text="关于我们"
                 android:textColor="#333"
                 android:textSize="16sp" />
 
@@ -118,6 +109,16 @@
                 android:src="@android:drawable/ic_media_ff" />
 
         </RelativeLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:text="V1.0.0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

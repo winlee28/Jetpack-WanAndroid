@@ -63,6 +63,8 @@ dependencies {
 
     implementation "androidx.viewpager2:viewpager2:1.0.0"
 
+//    compileOnly 'q.rorbin:VerticalTabLayout:1.2.5'
+
 //    kapt 'com.github.bumptech.glide:compiler:4.10.0'
     compileOnly project(":lib_net")
     compileOnly project(":lib_base")

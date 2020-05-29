@@ -8,25 +8,25 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.win.ft_home.databinding.NavigationPageLayoutBinding
-import com.win.ft_home.model.navigation.NavigationItemSub
+import com.win.ft_home.model.project.ProjectItemSub
 import com.win.lib_image_loader.app.ImageLoaderManager
 
 /**
  * Create by liwen on 2020/5/26
  */
 class PeojectPageAdapter constructor(context: Context) :
-    PagedListAdapter<NavigationItemSub, PeojectPageAdapter.ViewHolder>(
-        object : DiffUtil.ItemCallback<NavigationItemSub>() {
+    PagedListAdapter<ProjectItemSub, PeojectPageAdapter.ViewHolder>(
+        object : DiffUtil.ItemCallback<ProjectItemSub>() {
             override fun areItemsTheSame(
-                oldItem: NavigationItemSub,
-                newItem: NavigationItemSub
+                oldItem: ProjectItemSub,
+                newItem: ProjectItemSub
             ): Boolean {
                 return oldItem.id == newItem.id
             }
 
             override fun areContentsTheSame(
-                oldItem: NavigationItemSub,
-                newItem: NavigationItemSub
+                oldItem: ProjectItemSub,
+                newItem: ProjectItemSub
             ): Boolean {
                 return oldItem == oldItem
             }
@@ -59,7 +59,7 @@ class PeojectPageAdapter constructor(context: Context) :
         private val mBinding = binding
         private val mContext = context
 
-        fun setData(item: NavigationItemSub?) {
+        fun setData(item: ProjectItemSub?) {
             mBinding.itemData = item
             mBinding.context = mContext
             ImageLoaderManager.getInstance()

@@ -11,12 +11,12 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.win.ft_home.R
 import com.win.ft_home.databinding.FragmentProjectBinding
-import com.win.ft_home.model.navigation.NavigationModel
+import com.win.ft_home.model.project.ProjectTabItem
 import com.win.lib_base.base.BaseFragment
 
 class ProjectFragment : BaseFragment<ProjectViewModel, FragmentProjectBinding>() {
 
-    private var mData: MutableList<NavigationModel>? = null
+    private var mData: MutableList<ProjectTabItem>? = null
     private lateinit var mediator: TabLayoutMediator
     private lateinit var mTabLayout: TabLayout
     private lateinit var mViewPager: ViewPager2

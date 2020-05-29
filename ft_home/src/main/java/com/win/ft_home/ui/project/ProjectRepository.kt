@@ -1,8 +1,8 @@
 package com.win.ft_home.ui.project
 
 import com.win.ft_home.api.RequestCenter
-import com.win.ft_home.model.navigation.NavigationItem
-import com.win.ft_home.model.navigation.NavigationModel
+import com.win.ft_home.model.project.ProjectPageItem
+import com.win.ft_home.model.project.ProjectTabItem
 import com.win.lib_net.model.NetResult
 import com.win.lib_net.net.BaseRepository
 import com.win.lib_net.net.RetrofitClient
@@ -13,7 +13,7 @@ import com.win.lib_net.net.RetrofitClient
 class ProjectRepository : BaseRepository() {
 
 
-    suspend fun getTabData(): NetResult<MutableList<NavigationModel>> {
+    suspend fun getTabData(): NetResult<MutableList<ProjectTabItem>> {
         return safeApiCall(call = { requestTabData() })
     }
 
@@ -21,7 +21,7 @@ class ProjectRepository : BaseRepository() {
         executeResponse(RetrofitClient.getService(RequestCenter::class.java).getTabData())
 
 
-    suspend fun getTabItemPageData(count: Int, id: Int): NetResult<NavigationItem> {
+    suspend fun getTabItemPageData(count: Int, id: Int): NetResult<ProjectPageItem> {
         return safeApiCall(call = { requestTabItemPageData(count, id) })
     }
 

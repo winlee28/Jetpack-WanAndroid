@@ -4,21 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="16dp"
-        android:background="#fff">
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:fitsSystemWindows="true"
+        android:paddingLeft="8dp"
+        android:paddingRight="16dp">
 
         <ImageView
             android:id="@+id/mIvBack"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:padding="8dp"
             android:src="@drawable/close"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -31,10 +31,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:ellipsize="end"
+            android:gravity="center"
             android:singleLine="true"
             android:textColor="#333"
             android:textSize="16sp"
-            android:gravity="center"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

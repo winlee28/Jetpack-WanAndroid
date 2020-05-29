@@ -3,7 +3,7 @@ package com.win.ft_home.ui.project
 import androidx.lifecycle.viewModelScope
 import androidx.paging.DataSource
 import androidx.paging.PageKeyedDataSource
-import com.win.ft_home.model.navigation.NavigationItemSub
+import com.win.ft_home.model.project.ProjectItemSub
 import com.win.lib_base.base.AbsListViewModel
 import com.win.lib_net.model.NetResult
 import kotlinx.coroutines.launch
@@ -13,7 +13,7 @@ import java.util.*
  * Create by liwen on 2020/5/26
  */
 class TabItemViewModel(private val repository: ProjectRepository) :
-    AbsListViewModel<NavigationItemSub>() {
+    AbsListViewModel<ProjectItemSub>() {
 
     private var mId: Int = 0
 
@@ -21,26 +21,26 @@ class TabItemViewModel(private val repository: ProjectRepository) :
         mId = id
     }
 
-    override fun createDataSource(): DataSource<Int, NavigationItemSub> {
+    override fun createDataSource(): DataSource<Int, ProjectItemSub> {
 
-        return object : PageKeyedDataSource<Int, NavigationItemSub>() {
+        return object : PageKeyedDataSource<Int, ProjectItemSub>() {
             override fun loadInitial(
                 params: LoadInitialParams<Int>,
-                callback: LoadInitialCallback<Int, NavigationItemSub>
+                callback: LoadInitialCallback<Int, ProjectItemSub>
             ) {
                 getTabPageData(1, callback)
             }
 
             override fun loadAfter(
                 params: LoadParams<Int>,
-                callback: LoadCallback<Int, NavigationItemSub>
+                callback: LoadCallback<Int, ProjectItemSub>
             ) {
                 getTabPageData(params.key, callback)
             }
 
             override fun loadBefore(
                 params: LoadParams<Int>,
-                callback: LoadCallback<Int, NavigationItemSub>
+                callback: LoadCallback<Int, ProjectItemSub>
             ) {
                 callback.onResult(Collections.emptyList(), null)
             }
@@ -50,7 +50,7 @@ class TabItemViewModel(private val repository: ProjectRepository) :
 
     fun getTabPageData(
         count: Int,
-        callback: PageKeyedDataSource.LoadCallback<Int, NavigationItemSub>
+        callback: PageKeyedDataSource.LoadCallback<Int, ProjectItemSub>
     ) {
         viewModelScope.launch {
             val data = repository.getTabItemPageData(count, mId)
@@ -64,7 +64,7 @@ class TabItemViewModel(private val repository: ProjectRepository) :
 
     fun getTabPageData(
         count: Int,
-        callback: PageKeyedDataSource.LoadInitialCallback<Int, NavigationItemSub>
+        callback: PageKeyedDataSource.LoadInitialCallback<Int, ProjectItemSub>
     ) {
         viewModelScope.launch {
             val data = repository.getTabItemPageData(count, mId)

@@ -6,14 +6,14 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.win.ft_home.adapter.PeojectPageAdapter
-import com.win.ft_home.model.navigation.NavigationItemSub
+import com.win.ft_home.model.project.ProjectItemSub
 import com.win.lib_base.base.AbsListFragment
 import com.win.lib_base.datasource.MutablePageKeyedDataSource
 
 /**
  * Create by liwen on 2020/5/26
  */
-class TabItemFragment : AbsListFragment<NavigationItemSub, TabItemViewModel>() {
+class TabItemFragment : AbsListFragment<ProjectItemSub, TabItemViewModel>() {
 
     companion object {
         fun newInstance(id: Int): TabItemFragment {
@@ -35,8 +35,8 @@ class TabItemFragment : AbsListFragment<NavigationItemSub, TabItemViewModel>() {
     }
 
 
-    override fun generateAdapter(): PagedListAdapter<NavigationItemSub, RecyclerView.ViewHolder> {
-        return PeojectPageAdapter(requireContext()) as PagedListAdapter<NavigationItemSub, RecyclerView.ViewHolder>
+    override fun generateAdapter(): PagedListAdapter<ProjectItemSub, RecyclerView.ViewHolder> {
+        return PeojectPageAdapter(requireContext()) as PagedListAdapter<ProjectItemSub, RecyclerView.ViewHolder>
     }
 
     override fun onRefresh(refreshLayout: RefreshLayout) {
@@ -56,10 +56,10 @@ class TabItemFragment : AbsListFragment<NavigationItemSub, TabItemViewModel>() {
         val count = currentList.size / 15
 
         mViewModel.getTabPageData(count,
-            object : PageKeyedDataSource.LoadCallback<Int, NavigationItemSub>() {
-                override fun onResult(data: MutableList<NavigationItemSub>, adjacentPageKey: Int?) {
+            object : PageKeyedDataSource.LoadCallback<Int, ProjectItemSub>() {
+                override fun onResult(data: MutableList<ProjectItemSub>, adjacentPageKey: Int?) {
 
-                    val dataSource = MutablePageKeyedDataSource<NavigationItemSub>()
+                    val dataSource = MutablePageKeyedDataSource<ProjectItemSub>()
 
                     dataSource.data.addAll(currentList)
                     dataSource.data.addAll(data)

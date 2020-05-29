@@ -1,9 +1,9 @@
-package com.win.ft_home.model.navigation
+package com.win.ft_home.model.project
 
 /**
  * Create by liwen on 2020/5/26
  */
-data class NavigationItemSub(
+data class ProjectItemSub(
     val id:Int,
     val author: String,
     val desc: String,
@@ -17,7 +17,7 @@ data class NavigationItemSub(
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
 
-        other as NavigationItemSub
+        other as ProjectItemSub
 
         if (id != other.id) return false
         if (author != other.author) return false

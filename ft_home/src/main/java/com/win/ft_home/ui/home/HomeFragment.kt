@@ -49,7 +49,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(), OnRefre
             LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
 
         val decoration = DividerItemDecoration(activity, LinearLayoutManager.VERTICAL)
-        decoration.setDrawable(ContextCompat.getDrawable(requireActivity()!!, R.drawable.home_list_divier)!!)
+        decoration.setDrawable(ContextCompat.getDrawable(requireActivity()!!, R.drawable.home_list_divider)!!)
         mRecyclerView.addItemDecoration(decoration)
 
         mRecyclerView.animation = null

@@ -31,11 +31,11 @@ abstract class BaseFragment<T : ViewModel, M : ViewDataBinding> : Fragment() {
         return mViewBinding.root
     }
 
+    abstract fun getLayoutResId(): Int
+
     abstract fun initData()
 
     abstract fun initView()
-
-    abstract fun getLayoutResId(): Int
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

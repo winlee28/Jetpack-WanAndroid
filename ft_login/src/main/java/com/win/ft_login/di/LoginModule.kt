@@ -17,7 +17,7 @@ val loginRepoModule = module {
 }
 
 
-val loginViewModule = module {
+val loginViewModelModule = module {
     viewModel {
         LoginViewModel(get())
     }

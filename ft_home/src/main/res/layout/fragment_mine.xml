@@ -17,10 +17,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/home_list_divier">
+        android:background="@drawable/home_list_divider">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/top"
+            android:id="@+id/search_parent"
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:background="@drawable/bg"
@@ -64,7 +64,7 @@
             android:layout_marginTop="16dp"
             android:background="@android:color/white"
             android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/top">
+            app:layout_constraintTop_toBottomOf="@id/search_parent">
 
             <TextView
                 android:layout_width="wrap_content"

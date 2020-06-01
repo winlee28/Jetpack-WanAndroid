@@ -44,7 +44,7 @@ class TreeFragment : BaseFragment<TreeViewModel, FragmentTreeBinding>() {
         )
 
         val decoration = DividerItemDecoration(activity, VERTICAL)
-        decoration.setDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.home_list_divier)!!)
+        decoration.setDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.home_list_divider)!!)
 
         mRecyclerView.addItemDecoration(decoration)
 

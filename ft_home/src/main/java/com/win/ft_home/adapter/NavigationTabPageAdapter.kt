@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.win.ft_home.R
 import com.win.ft_home.databinding.NavigationTabPageAdapterBinding
 import com.win.ft_home.model.navigation.NavigationItemDetail
+import com.win.lib_base.adapter.BaseRecyclerViewAdapter
 
 /**
  * Create by liwen on 2020/6/1

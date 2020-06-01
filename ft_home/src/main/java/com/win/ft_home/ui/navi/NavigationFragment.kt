@@ -14,6 +14,7 @@ import com.win.ft_home.databinding.FragmentNavigationBinding
 import com.win.ft_home.model.navigation.NavigationItem
 import com.win.ft_home.model.navigation.NavigationItemDetail
 import com.win.lib_base.base.BaseFragment
+import com.win.lib_base.service.search.wrap.SearchWrapService
 
 class NavigationFragment : BaseFragment<NavigationViewModel, FragmentNavigationBinding>() {
 
@@ -37,6 +38,10 @@ class NavigationFragment : BaseFragment<NavigationViewModel, FragmentNavigationB
         mViewPager2.orientation = ViewPager2.ORIENTATION_VERTICAL
 
         mViewPager2.registerOnPageChangeCallback(viewPager2Callback)
+
+        mViewBinding.searchParent.setOnClickListener {
+            SearchWrapService.instance.start(requireContext())
+        }
 
     }
 

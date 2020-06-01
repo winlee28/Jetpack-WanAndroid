@@ -1,4 +1,4 @@
-package com.win.ft_home.adapter
+package com.win.lib_base.adapter
 
 import android.content.Context
 import androidx.recyclerview.widget.RecyclerView

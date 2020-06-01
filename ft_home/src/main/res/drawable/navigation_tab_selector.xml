@@ -2,7 +2,7 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:drawable="@android:color/white" android:state_selected="true" />
-    <item android:drawable="@drawable/home_list_divier" />
+    <item android:drawable="@drawable/home_list_divider" />
 
 
 </selector>

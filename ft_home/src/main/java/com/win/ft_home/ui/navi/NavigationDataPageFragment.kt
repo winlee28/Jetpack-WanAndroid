@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.win.ft_home.R
-import com.win.ft_home.adapter.BaseRecyclerViewAdapter
 import com.win.ft_home.adapter.NavigationTabPageAdapter
 import com.win.ft_home.databinding.NavigationDataPageBinding
 import com.win.ft_home.model.navigation.NavigationItemDetail
+import com.win.lib_base.adapter.BaseRecyclerViewAdapter
 import com.win.lib_base.base.BaseFragment
 import com.win.lib_base.service.webview.warp.WebViewWarpService
 

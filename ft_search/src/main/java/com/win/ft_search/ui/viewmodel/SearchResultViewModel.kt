@@ -1,8 +1,10 @@
-package com.win.ft_search.ui
+package com.win.ft_search.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.viewModelScope
 import androidx.paging.DataSource
 import androidx.paging.PageKeyedDataSource
+import com.win.ft_search.ui.repository.SearchRepository
 import com.win.lib_base.base.AbsListViewModel
 import com.win.lib_base.model.DatasBean
 import com.win.lib_net.model.NetResult
@@ -40,7 +42,7 @@ class SearchResultViewModel(private val repo: SearchRepository) :
                 params: LoadParams<Int>,
                 callback: LoadCallback<Int, DatasBean>
             ) {
-                loadDataAfter(params, callback)
+                loadDataAfter(params.key, callback)
             }
 
             override fun loadBefore(
@@ -69,15 +71,16 @@ class SearchResultViewModel(private val repo: SearchRepository) :
     }
 
 
-    private fun loadDataAfter(
-        params: PageKeyedDataSource.LoadParams<Int>,
+    fun loadDataAfter(
+        key: Int,
         callback: PageKeyedDataSource.LoadCallback<Int, DatasBean>
     ) {
 
         viewModelScope.launch {
-            val search = repo.search(params.key, getHotKey())
+
+            val search = repo.search(key, getHotKey())
             if (search is NetResult.Success) {
-                callback.onResult(search.data.datas, params.key + 1)
+                callback.onResult(search.data.datas, key + 1)
             } else if (search is NetResult.Error) {
 //                Toast.makeText(, "", Toast.LENGTH_SHORT).show();
             }

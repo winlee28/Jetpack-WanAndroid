@@ -1,4 +1,4 @@
-package com.win.ft_search.ui
+package com.win.ft_search.ui.repository
 
 import com.win.ft_search.api.RequestCenter
 import com.win.ft_search.model.HotKeyModel

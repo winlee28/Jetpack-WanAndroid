@@ -1,4 +1,4 @@
-package com.win.ft_search.ui
+package com.win.ft_search.ui.fragment
 
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.win.ft_search.R
 import com.win.ft_search.adapter.SearchHotKeyAdapter
 import com.win.ft_search.databinding.HotkeyPageBinding
+import com.win.ft_search.ui.viewmodel.HotKeyViewModel
 import com.win.lib_base.base.BaseFragment
 
 /**

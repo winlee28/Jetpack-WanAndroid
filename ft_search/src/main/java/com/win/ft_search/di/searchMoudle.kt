@@ -1,9 +1,9 @@
 package com.win.ft_search.di
 
-import com.win.ft_search.ui.HotKeyViewModel
-import com.win.ft_search.ui.SearchRepository
-import com.win.ft_search.ui.SearchResultViewModel
-import com.win.ft_search.ui.SearchViewModel
+import com.win.ft_search.ui.viewmodel.HotKeyViewModel
+import com.win.ft_search.ui.repository.SearchRepository
+import com.win.ft_search.ui.viewmodel.SearchResultViewModel
+import com.win.ft_search.ui.viewmodel.SearchViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

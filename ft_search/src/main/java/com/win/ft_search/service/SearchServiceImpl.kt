@@ -2,7 +2,7 @@ package com.win.ft_search.service
 
 import android.content.Context
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.win.ft_search.ui.SearchActivity
+import com.win.ft_search.ui.activity.SearchActivity
 import com.win.lib_base.service.ConstantsPath
 import com.win.lib_base.service.search.SearchService
 

@@ -1,21 +1,22 @@
-package com.win.ft_search.ui
+package com.win.ft_search.ui.activity
 
 import android.content.Context
+import android.content.Context.INPUT_METHOD_SERVICE
 import android.content.Intent
 import android.text.TextUtils
 import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.win.ft_search.R
-import com.win.ft_search.adapter.SearchHotKeyAdapter
 import com.win.ft_search.databinding.ActivitySearchBinding
+import com.win.ft_search.ui.fragment.HotKeyFragment
+import com.win.ft_search.ui.fragment.SearchResultFragment
+import com.win.ft_search.ui.viewmodel.SearchViewModel
 import com.win.lib_base.base.BaseActivity
+import com.win.lib_base.utils.KeyBoardUtils
 
 /**
  * Create by liwen on 2020/6/1
@@ -47,6 +48,10 @@ class SearchActivity : BaseActivity<SearchViewModel, ActivitySearchBinding>() {
                     if (getInputData() == null) {
                         return true
                     }
+
+                    //隐藏光标和软键盘
+                    mViewBinding.search.clearFocus()
+                    KeyBoardUtils.hideKeyboard(mViewBinding.search)
 
                     addFragment(
                         SearchResultFragment.newInstance(getInputData()!!),

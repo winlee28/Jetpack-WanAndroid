@@ -47,7 +47,7 @@ class TabItemFragment : AbsListFragment<ProjectItemSub, TabItemViewModel>() {
     override fun onLoadMore(refreshLayout: RefreshLayout) {
 
         val currentList = mAdapter.currentList
-        if (currentList != null && currentList.size <= 0) {
+        if (currentList == null || currentList.size <= 0) {
             return
         }
 

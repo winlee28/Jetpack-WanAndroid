@@ -3,7 +3,7 @@
 
 
     <application >
-        <activity android:name=".ui.SearchActivity"
+        <activity android:name=".ui.activity.SearchActivity"
                android:windowSoftInputMode="stateVisible|adjustPan"
             />
     </application>

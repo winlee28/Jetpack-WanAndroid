@@ -16,13 +16,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/home_list_divier">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/top"
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:background="#3999"
+            android:background="@drawable/bg"
             android:fitsSystemWindows="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -48,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
-                android:src="@android:drawable/ic_menu_delete"
+                android:src="@drawable/exit"
                 android:visibility="@{user==null?View.GONE:View.VISIBLE}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -61,7 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="16dp"
-            android:background="#3999"
+            android:background="@android:color/white"
             android:orientation="horizontal"
             app:layout_constraintTop_toBottomOf="@id/top">
 
@@ -79,7 +80,7 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
                 android:layout_marginRight="16dp"
-                android:src="@android:drawable/ic_media_ff" />
+                android:src="@drawable/new_enter_button" />
 
         </RelativeLayout>
 
@@ -88,7 +89,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="1dp"
-            android:background="#3999"
+            android:background="@android:color/white"
             android:orientation="horizontal"
             app:layout_constraintTop_toBottomOf="@id/favorite">
 
@@ -106,7 +107,7 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
                 android:layout_marginRight="16dp"
-                android:src="@android:drawable/ic_media_ff" />
+                android:src="@drawable/new_enter_button" />
 
         </RelativeLayout>
 
@@ -114,7 +115,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="10dp"
             android:text="V1.0.0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

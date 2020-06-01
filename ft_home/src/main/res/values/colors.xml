@@ -3,4 +3,6 @@
 
     <color name="tab_indicator_color">#008577</color>
 
+    <color name="navigation_tab_bg">#F4F3F4</color>
+
 </resources>

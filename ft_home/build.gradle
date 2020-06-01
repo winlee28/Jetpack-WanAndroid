@@ -56,6 +56,7 @@ dependencies {
     compileOnly rootProject.depsLibs.SmartRefreshLayout
     compileOnly rootProject.depsLibs.banner
     compileOnly rootProject.depsLibs.glide
+    compileOnly rootProject.depsLibs.gson
 
     implementation rootProject.depsLibs.koinScop
     implementation rootProject.depsLibs.KoinViewModel

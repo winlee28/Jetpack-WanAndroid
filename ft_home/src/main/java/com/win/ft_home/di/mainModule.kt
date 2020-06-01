@@ -4,6 +4,7 @@ import com.win.ft_home.ui.main.MainViewModel
 import com.win.ft_home.ui.home.HomeRepository
 import com.win.ft_home.ui.home.HomeViewModel
 import com.win.ft_home.ui.mine.MineViewModel
+import com.win.ft_home.ui.navi.NavigationDataPageViewModel
 import com.win.ft_home.ui.navi.NavigationRepository
 import com.win.ft_home.ui.navi.NavigationViewModel
 import com.win.ft_home.ui.project.ProjectRepository
@@ -34,5 +35,6 @@ val treeViewModelModule = module {
     viewModel { TabItemViewModel(get()) }
     viewModel { MineViewModel() }
     viewModel { NavigationViewModel(get()) }
+    viewModel { NavigationDataPageViewModel() }
 }
 

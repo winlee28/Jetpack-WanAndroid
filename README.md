@@ -97,6 +97,6 @@ DataSource来完成。具体也会在后续文章中进行讲解。
 
 #### 扫描下方二维码关注公众号，获取更多技术干货。
 
-![](https://user-gold-cdn.xitu.io/2019/12/13/16efe34cc94c69c3?w=312&h=308&f=jpeg&s=76252)
+![](https://github.com/winlee28/Jetpack-WanAndroid/blob/master/%E4%BA%8C%E7%BB%B4%E7%A0%81.jpg)
 
 

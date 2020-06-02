@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.content.Intent
 import android.text.TextUtils
+import android.util.Log
 import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
@@ -86,6 +87,10 @@ class SearchActivity : BaseActivity<SearchViewModel, ActivitySearchBinding>() {
             return null
         }
         return data
+    }
+
+    fun setHotKeyInputSearch(hotKey: String) {
+        mViewBinding.search.setText(hotKey)
     }
 
 }

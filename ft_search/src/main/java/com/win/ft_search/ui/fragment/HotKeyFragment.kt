@@ -1,12 +1,16 @@
 package com.win.ft_search.ui.fragment
 
+import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.win.ft_search.R
 import com.win.ft_search.adapter.SearchHotKeyAdapter
 import com.win.ft_search.databinding.HotkeyPageBinding
+import com.win.ft_search.model.HotKeyModel
+import com.win.ft_search.ui.activity.SearchActivity
 import com.win.ft_search.ui.viewmodel.HotKeyViewModel
+import com.win.lib_base.adapter.BaseRecyclerViewAdapter
 import com.win.lib_base.base.BaseFragment
 
 /**
@@ -30,6 +34,13 @@ class HotKeyFragment : BaseFragment<HotKeyViewModel, HotkeyPageBinding>() {
             val adapter = SearchHotKeyAdapter(requireContext())
             adapter.dataList = it
             mRecycleView.adapter = adapter
+
+            adapter.setOnItemClickListener(object :
+                BaseRecyclerViewAdapter.OnItemClickListener<HotKeyModel> {
+                override fun onItemClick(item: HotKeyModel, position: Int) {
+                    (requireActivity() as SearchActivity).setHotKeyInputSearch(item.name)
+                }
+            })
         })
 
     }

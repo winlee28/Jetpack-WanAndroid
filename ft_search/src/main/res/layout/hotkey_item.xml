@@ -17,6 +17,7 @@
             android:id="@+id/hotkey"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:background="@drawable/hotkey_bg"
             android:gravity="center_vertical"
             android:textColor="#333"
             android:textSize="16sp"

@@ -3,33 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_navi">
+    app:startDestination="@+id/navigation_tree">
 
-    <fragment
+    <fixFragment
         android:id="@+id/navigation_home"
         android:name="com.win.ft_home.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
-    <fragment
+    <fixFragment
         android:id="@+id/navigation_project"
         android:name="com.win.ft_home.ui.project.ProjectFragment"
         android:label="@string/title_project"
         tools:layout="@layout/fragment_navigation" />
 
-    <fragment
+    <fixFragment
         android:id="@+id/navigation_navi"
         android:name="com.win.ft_home.ui.navi.NavigationFragment"
         android:label="@string/title_navi"
         tools:layout="@layout/fragment_project" />
 
-    <fragment
+    <fixFragment
         android:id="@+id/navigation_tree"
         android:name="com.win.ft_home.ui.tree.TreeFragment"
         android:label="@string/title_tree"
         tools:layout="@layout/fragment_tree" />
 
-    <fragment
+    <fixFragment
         android:id="@+id/navigation_mine"
         android:name="com.win.ft_home.ui.mine.MineFragment"
         android:label="@string/title_mine"

@@ -40,10 +40,7 @@ class MineFragment : BaseFragment<MineViewModel, FragmentMineBinding>() {
                 ) { dialog, _ ->
                     dialog.dismiss()
                 }.show()
-
-
         }
-
     }
 
 

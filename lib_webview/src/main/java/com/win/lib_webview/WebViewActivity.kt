@@ -3,6 +3,7 @@ package com.win.lib_webview
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.net.http.SslError
 import android.os.Bundle
 import android.webkit.*
@@ -45,6 +46,12 @@ class WebViewActivity : AppCompatActivity() {
         initActionBar()
         initWebView()
 
+        mCollect.setOnClickListener {
+
+//            mCollect.imageTintList =
+//                ColorStateList.valueOf(resources.getColor((R.color.imageView_tint)))
+
+        }
     }
 
     private fun initActionBar() {

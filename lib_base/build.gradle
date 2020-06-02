@@ -57,6 +57,7 @@ dependencies {
     kapt 'com.alibaba:arouter-compiler:1.2.2'
 
     compileOnly rootProject.depsLibs.constraintlayout
+    compileOnly rootProject.depsLibs.navigationFragment
 
     implementation rootProject.depsLibs.koinScop
     implementation rootProject.depsLibs.KoinViewModel

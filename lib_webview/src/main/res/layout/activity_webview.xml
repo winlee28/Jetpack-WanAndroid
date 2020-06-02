@@ -13,7 +13,7 @@
         android:background="#fff"
         android:fitsSystemWindows="true"
         android:paddingLeft="8dp"
-        android:paddingRight="16dp">
+        android:paddingRight="8dp">
 
         <ImageView
             android:id="@+id/mIvBack"
@@ -41,6 +41,17 @@
             app:layout_constraintStart_toEndOf="@id/mIvBack"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="标题" />
+
+        <ImageView
+            android:id="@+id/mCollect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:src="@drawable/collect"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/mTvTitle"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

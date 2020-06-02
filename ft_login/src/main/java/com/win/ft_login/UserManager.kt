@@ -35,15 +35,14 @@ object UserManager {
     }
 
     fun isLogin(): Boolean {
-        Log.e("liwen", "==islogin==" + (getUser() != null))
         return getUser() != null
     }
 
     fun removeUser() {
         mmkv.encode(USER_DATA, "")
-//        if (liveData.hasObservers()) {
-//            liveData.postValue(getUser())
-//        }
+        if (liveData.hasObservers()) {
+            liveData.postValue(getUser())
+        }
     }
 
     fun start(context: Context): LiveData<User> {

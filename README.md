@@ -1,14 +1,18 @@
-# 项目介绍
+## 项目介绍
 
-本项目采用组件化+MVVM架构进行开发，对功能组件和业务组件进行拆分，通过ARouter进行组件之间的通信。
+本项目采用组件化+MVVM架构进行开发，对功能组件和业务组件进行拆分，通过ARouter进行组件之间的通信。本文主要是对整个应用的技术架构作一个简单的介绍。
 
-# 技术要点
+项目地址：https://github.com/winlee28/Jetpack-WanAndroid 欢迎star
 
-###  Kotlin+Jetpack+Coroutines+Retrofit+koin
+## 技术要点
+
+####  Kotlin+Jetpack+Coroutines+Retrofit+koin
 
 项目整体架构图：
 
-![架构](https://github.com/winlee28/Jetpack-WanAndroid/blob/master/%E6%9E%B6%E6%9E%84.jpg)
+![](https://user-gold-cdn.xitu.io/2020/6/2/17274bf426623d03?w=1464&h=576&f=jpeg&s=70421)
+
+宿主App没有任何的业务代码，整个业务被拆分为各个ft_lib模块。对一些功能组件进行封装抽取为lib，提供给上层依赖。ft_lib之间没有任务依赖关系，通过Arouter进行通信。
 
 ## 首页功能
 首页分为5个Tab，主要为首页、项目、导航、体系和我的。
@@ -68,7 +72,9 @@ DataSource来完成。具体也会在后续文章中进行讲解。
 ## 网络请求
 主要还是通过Retrofit+协程来完成。整个应用的数据流向架构为：
 
-![架构](https://github.com/winlee28/Jetpack-WanAndroid/blob/master/dataFLow.jpg)
+
+
+![](https://user-gold-cdn.xitu.io/2020/6/2/17274bfa267341e2?w=1246&h=650&f=jpeg&s=48797)
 
 目前还未加缓存功能，后续会通过room来实现缓存功能。
 
@@ -85,3 +91,12 @@ DataSource来完成。具体也会在后续文章中进行讲解。
 学习地址 ：https://start.insert-koin.io/#/quickstart/kotlin
 
 以上就是整个App功能的简单介绍，后续会单独讲解一些技术要点。
+
+
+最后要感谢WanAndroid提供的开放API以及https://github.com/jiangyuanyuan/Multi项目提供的一些思路。
+
+#### 扫描下方二维码关注公众号，获取更多技术干货。
+
+![](https://user-gold-cdn.xitu.io/2019/12/13/16efe34cc94c69c3?w=312&h=308&f=jpeg&s=76252)
+
+

@@ -8,7 +8,7 @@ Kotlin+Jetpack+Coroutines+Retrofit+koin
 
 项目整体架构图：
 
-![架构](/Users/ppd-03020339/jetpack/wan-android/架构.jpg)
+![架构](https://github.com/winlee28/Jetpack-WanAndroid/blob/master/%E6%9E%B6%E6%9E%84.jpg)
 
 ## 首页功能
 首页分为5个Tab，主要为首页、项目、导航、体系和我的。
@@ -68,7 +68,7 @@ DataSource来完成。具体也会在后续文章中进行讲解。
 ## 网络请求
 主要还是通过Retrofit+协程来完成。整个应用的数据流向架构为：
 
-![架构](/Users/ppd-03020339/jetpack/wan-android/dataflow.jpg)
+![架构](https://github.com/winlee28/Jetpack-WanAndroid/blob/master/dataFLow.jpg)
 
 目前还未加缓存功能，后续会通过room来实现缓存功能。
 

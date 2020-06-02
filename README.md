@@ -101,5 +101,5 @@ DataSource来完成。具体也会在后续文章中进行讲解。
 
 #### 扫描下方二维码关注公众号，获取更多技术干货。
 
-![](source/qrcode.png)
+![](source/qrcode.jpg)
 

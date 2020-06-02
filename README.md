@@ -2,7 +2,12 @@
 
 本项目采用组件化+MVVM架构进行开发，对功能组件和业务组件进行拆分，通过ARouter进行组件之间的通信。本文主要是对整个应用的技术架构作一个简单的介绍。
 
-项目地址：https://github.com/winlee28/Jetpack-WanAndroid 欢迎star
+
+## 项目截图
+
+![](source/home.png) |![](source/project.png) | ![](source/navigation.png)
+:-------------------------:|:-------------------------:|:-------------------------:
+![](source/search.png) |![](source/tree.png) | ![](source/webview.png)
 
 ## 技术要点
 
@@ -10,7 +15,7 @@
 
 项目整体架构图：
 
-![](https://user-gold-cdn.xitu.io/2020/6/2/17274bf426623d03?w=1464&h=576&f=jpeg&s=70421)
+![](source/architecture.jpg)
 
 宿主App没有任何的业务代码，整个业务被拆分为各个ft_lib模块。对一些功能组件进行封装抽取为lib，提供给上层依赖。ft_lib之间没有任务依赖关系，通过Arouter进行通信。
 
@@ -73,8 +78,7 @@ DataSource来完成。具体也会在后续文章中进行讲解。
 主要还是通过Retrofit+协程来完成。整个应用的数据流向架构为：
 
 
-
-![](https://user-gold-cdn.xitu.io/2020/6/2/17274bfa267341e2?w=1246&h=650&f=jpeg&s=48797)
+![](source/dataFlow.jpg)
 
 目前还未加缓存功能，后续会通过room来实现缓存功能。
 
@@ -97,6 +101,5 @@ DataSource来完成。具体也会在后续文章中进行讲解。
 
 #### 扫描下方二维码关注公众号，获取更多技术干货。
 
-![](https://github.com/winlee28/Jetpack-WanAndroid/blob/master/%E4%BA%8C%E7%BB%B4%E7%A0%81.jpg)
-
+![](source/qrcode.png)
 

@@ -4,7 +4,7 @@
 
 # 技术要点
 
-Kotlin+Jetpack+Coroutines+Retrofit+koin
+###  Kotlin+Jetpack+Coroutines+Retrofit+koin
 
 项目整体架构图：
 
@@ -77,5 +77,11 @@ DataSource来完成。具体也会在后续文章中进行讲解。
 
 组件通信主要是通过Arouter来实现的。通过提供的IProvider来定义Service来完成。Service的实现定义在各自的module中。
 并在base模块中定义ServiceImpl的包装类共调用方调用，这样对方就无需关心业务逻辑，直接使用即可。
+
+## 依赖注入
+因为App是采用Kotlin来开发的，所以 没有选择dagger2而是选择了Koin，适用于 Kotlin 开发人员的实用轻量级依赖注入框架。
+用纯 Kotlin 编写，无代理，无代码生成，无反射。
+
+学习地址 ：https://start.insert-koin.io/#/quickstart/kotlin
 
 以上就是整个App功能的简单介绍，后续会单独讲解一些技术要点。

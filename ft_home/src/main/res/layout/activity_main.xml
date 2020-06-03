@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@id/nav_view"
-            app:defaultNavHost="false" />
+            app:defaultNavHost="true" />
         <!--app:navGraph="@navigation/mobile_navigation"-->
         <!--
          超过三个item的时候 item的文字会被隐藏

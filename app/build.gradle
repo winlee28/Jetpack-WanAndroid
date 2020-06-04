@@ -49,9 +49,6 @@ dependencies {
     implementation rootProject.depsLibs.lifecycleExt
     implementation rootProject.depsLibs.navigationFragmentKtx
     implementation rootProject.depsLibs.navigationUiKtx
-    testImplementation rootProject.depsLibs.junit
-    androidTestImplementation rootProject.depsLibs.extJunit
-    androidTestImplementation rootProject.depsLibs.espressoCore
 
 
     implementation rootProject.depsLibs.retrofit
@@ -68,17 +65,17 @@ dependencies {
     implementation rootProject.depsLibs.banner
     implementation rootProject.depsLibs.SmartRefreshLayout
 
-
     implementation rootProject.depsLibs.koinScop
     implementation rootProject.depsLibs.KoinViewModel
     implementation rootProject.depsLibs.koinFragmet
 
-    implementation 'com.alibaba:arouter-api:1.5.0'
-    kapt 'com.alibaba:arouter-compiler:1.2.2'
+    implementation rootProject.depsLibs.aroutreApi
+    kapt rootProject.depsLibs.arouterCompiler
 
-    implementation 'com.tencent:mmkv-static:1.1.1'
+    implementation rootProject.depsLibs.mmkv
 
-    implementation "androidx.viewpager2:viewpager2:1.0.0"
+    implementation rootProject.depsLibs.viewPager2
+
 
     implementation project(":ft_home")
     implementation project(":ft_tree_detail")

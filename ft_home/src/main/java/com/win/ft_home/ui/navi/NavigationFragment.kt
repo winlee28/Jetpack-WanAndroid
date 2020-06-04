@@ -1,6 +1,8 @@
 package com.win.ft_home.ui.navi
 
+import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,11 +14,17 @@ import com.win.ft_home.`interface`.NavigationTabItemSelectedListener
 import com.win.ft_home.adapter.NavigationTabAdapter
 import com.win.ft_home.databinding.FragmentNavigationBinding
 import com.win.ft_home.model.navigation.NavigationItem
-import com.win.ft_home.model.navigation.NavigationItemDetail
 import com.win.lib_base.base.BaseFragment
 import com.win.lib_base.service.search.wrap.SearchWrapService
+import com.win.lib_base.utils.DensityUtil
 
 class NavigationFragment : BaseFragment<NavigationViewModel, FragmentNavigationBinding>() {
+
+    private var LAST_ITEM_COUNT_LIMIT: Int = 0
+    private var TAB_ITEM_OFFSET_TOP: Int = DensityUtil.dip2px(50f)
+    private var TAB_ITEM_OFFSET_BOTTOM: Int = DensityUtil.dip2px(50f)
+    private var mPrePosition = 0
+    private var heightPixels: Int = 0
 
     private lateinit var mTabAdapter: NavigationTabAdapter
     private lateinit var mViewPager2: ViewPager2
@@ -43,6 +51,13 @@ class NavigationFragment : BaseFragment<NavigationViewModel, FragmentNavigationB
             SearchWrapService.instance.start(requireContext())
         }
 
+        calculateMoveSize()
+    }
+
+    private fun calculateMoveSize() {
+        heightPixels = requireActivity().resources.displayMetrics.heightPixels
+        heightPixels = ((heightPixels - (TAB_ITEM_OFFSET_TOP * 2).toFloat()) / 2).toInt()
+        LAST_ITEM_COUNT_LIMIT = (heightPixels / TAB_ITEM_OFFSET_TOP.toFloat()).toInt()
     }
 
     override fun initData() {
@@ -64,7 +79,6 @@ class NavigationFragment : BaseFragment<NavigationViewModel, FragmentNavigationB
             override fun onItemSelected(itemSub: NavigationItem, position: Int) {
                 mTabAdapter.setItemPositionSelected(position)
                 mTabAdapter.notifyDataSetChanged()
-
                 mViewPager2.setCurrentItem(position, false)
 
             }
@@ -94,13 +108,51 @@ class NavigationFragment : BaseFragment<NavigationViewModel, FragmentNavigationB
 
     private val viewPager2Callback = object : ViewPager2.OnPageChangeCallback() {
 
+
         override fun onPageSelected(position: Int) {
             super.onPageSelected(position)
+
+            performMoveEvent(position)
 
             mTabAdapter.setItemPositionSelected(position)
             mTabAdapter.notifyDataSetChanged()
 
         }
+    }
+
+
+    private fun performMoveEvent(position: Int) {
+
+        if (position > mPrePosition) {  //向下滑动
+
+            if (position * TAB_ITEM_OFFSET_TOP
+                + TAB_ITEM_OFFSET_TOP > heightPixels
+            ) {
+                mTabRecycleView.smoothScrollBy(0, TAB_ITEM_OFFSET_TOP)
+            }
+
+        } else { //向上滑动
+
+            if (position * TAB_ITEM_OFFSET_BOTTOM
+                + TAB_ITEM_OFFSET_BOTTOM * LAST_ITEM_COUNT_LIMIT > heightPixels
+                && position < (mViewPager2.adapter!!.itemCount - LAST_ITEM_COUNT_LIMIT)
+            ) {
+
+                if (position < LAST_ITEM_COUNT_LIMIT) {
+                    TAB_ITEM_OFFSET_BOTTOM = TAB_ITEM_OFFSET_BOTTOM * LAST_ITEM_COUNT_LIMIT
+                } else {
+                    TAB_ITEM_OFFSET_BOTTOM = TAB_ITEM_OFFSET_TOP
+                }
+
+                mTabRecycleView.smoothScrollBy(
+                    0,
+                    -TAB_ITEM_OFFSET_BOTTOM
+                )
+
+            }
+        }
+
+        mPrePosition = position
     }
 
     override fun onDestroyView() {

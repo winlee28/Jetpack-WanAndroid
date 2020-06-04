@@ -40,9 +40,9 @@ object UserManager {
 
     fun removeUser() {
         mmkv.encode(USER_DATA, "")
-        if (liveData.hasObservers()) {
-            liveData.postValue(getUser())
-        }
+//        if (liveData.hasObservers()) {
+//            liveData.postValue(getUser())
+//        }
     }
 
     fun start(context: Context): LiveData<User> {

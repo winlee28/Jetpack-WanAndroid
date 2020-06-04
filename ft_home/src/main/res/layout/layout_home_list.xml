@@ -11,6 +11,8 @@
 
         <import type="com.win.lib_base.utils.ConvertUtils" />
 
+        <import type="android.text.Html" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,7 +28,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="@{feed.title}"
+            android:text="@{Html.fromHtml(feed.title)}"
             android:textColor="#333"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"

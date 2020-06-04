@@ -1,6 +1,7 @@
 package com.win.ft_home.ui.project
 
 import android.graphics.Typeface
+import android.text.Html
 import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -105,7 +106,7 @@ class ProjectFragment : BaseFragment<ProjectViewModel, FragmentProjectBinding>()
 //            val stateList = ColorStateList(states, colors)
 //            textView.setTextColor(stateList)
 
-            textView.text = item.name.replace("&amp;", " & ")
+            textView.text = Html.fromHtml(item.name)
             return textView
         }
 

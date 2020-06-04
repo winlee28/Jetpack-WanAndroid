@@ -97,7 +97,8 @@ DataSource来完成。具体也会在后续文章中进行讲解。
 以上就是整个App功能的简单介绍，后续会单独讲解一些技术要点。
 
 
-最后要感谢WanAndroid提供的开放API以及https://github.com/jiangyuanyuan/Multi项目提供的一些思路。
+最后要感谢WanAndroid提供的开放API以及
+https://github.com/lulululbj/wanandroid 项目提供的一些思路。
 
 #### 扫描下方二维码关注公众号，获取更多技术干货。
 

@@ -63,6 +63,7 @@ AbsListViewModel主要是封装了paging的一些常用配置等信息。
 #### 导航
 导航页面主要分为顶部的搜索和底部的分类。点击搜索后打开新的页面。通过fragment来承载热门搜索和搜索返回结果。
 底部的分类主要是通过RecyclerView+ViewPager2来实现的。通过设置ViewPager2的orientation为ORIENTATION_VERTICAL来实现列表滑动。
+同时实现了左侧RecyclerView 会随着右侧列表的滑动而滑动，这样保证了左侧选中的tab永远是可见的。
 
 #### 体系
 通过自定义FlowLayout来实现Tag标签管理。并进一步封装TagFlowLayout并对外提供TagAdapter来加载数据。

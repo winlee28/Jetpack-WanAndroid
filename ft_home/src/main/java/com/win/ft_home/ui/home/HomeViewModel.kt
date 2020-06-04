@@ -32,35 +32,4 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
 
     }
 
-    fun getHomeList(
-        count: Int,
-        callback: PageKeyedDataSource.LoadInitialCallback<Int, DatasBean>
-    ) {
-
-        viewModelScope.launch {
-            val homeFeed = homeRepository.getHomeList(count)
-            if (homeFeed is NetResult.Success) {
-                callback.onResult(homeFeed.data.datas, null, 1)
-            } else if (homeFeed is NetResult.Error) {
-//                Toast.makeText(App.CONTEXT, homeFeed.exception.msg, Toast.LENGTH_LONG).show()
-            }
-        }
-    }
-
-    fun getHomeList(
-        count: Int,
-        key: Int,
-        callback: PageKeyedDataSource.LoadCallback<Int, DatasBean>
-    ) {
-
-
-        viewModelScope.launch {
-            val homeFeed = homeRepository.getHomeList(count)
-            if (homeFeed is NetResult.Success) {
-                callback.onResult(homeFeed.data.datas, key)
-            } else if (homeFeed is NetResult.Error) {
-//                Toast.makeText(App.CONTEXT, homeFeed.exception.msg, Toast.LENGTH_LONG).show()
-            }
-        }
-    }
 }

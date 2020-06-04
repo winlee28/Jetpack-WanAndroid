@@ -1,5 +1,6 @@
 package com.win.ft_home.di
 
+import com.win.ft_home.ui.home.HomeListViewModel
 import com.win.ft_home.ui.main.MainViewModel
 import com.win.ft_home.ui.home.HomeRepository
 import com.win.ft_home.ui.home.HomeViewModel
@@ -36,5 +37,6 @@ val treeViewModelModule = module {
     viewModel { MineViewModel() }
     viewModel { NavigationViewModel(get()) }
     viewModel { NavigationDataPageViewModel() }
+    viewModel { HomeListViewModel(get()) }
 }
 

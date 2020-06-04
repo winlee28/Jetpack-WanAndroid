@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.win.ft_home.model.navigation.NavigationItem
+import com.win.lib_base.utils.BaseContext
 import com.win.lib_net.model.NetResult
 import kotlinx.coroutines.launch
 
@@ -24,7 +25,11 @@ class NavigationViewModel(private val navigationRepo: NavigationRepository) : Vi
                 navigationLiveData.postValue(data.data)
 
             } else if (data is NetResult.Error) {
-//                Toast.makeText(, "", Toast.LENGTH_SHORT).show();
+                Toast.makeText(
+                    BaseContext.instance.getContext(),
+                    data.exception.msg,
+                    Toast.LENGTH_SHORT
+                ).show();
             }
 
         }

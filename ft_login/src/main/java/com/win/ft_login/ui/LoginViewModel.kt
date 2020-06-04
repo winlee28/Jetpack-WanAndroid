@@ -1,9 +1,11 @@
 package com.win.ft_login.ui
 
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.win.lib_base.model.User
+import com.win.lib_base.utils.BaseContext
 import com.win.lib_net.model.NetResult
 import kotlinx.coroutines.launch
 
@@ -21,7 +23,11 @@ class LoginViewModel(private val loginRepo: LoginRepository) : ViewModel() {
             if (user is NetResult.Success) {
                 loginLiveData.postValue(user.data)
             } else if (user is NetResult.Error) {
-//                Toast.makeText(, "", Toast.LENGTH_SHORT).show();
+                Toast.makeText(
+                    BaseContext.instance.getContext(),
+                    user.exception.msg,
+                    Toast.LENGTH_LONG
+                ).show()
             }
 
         }
@@ -31,11 +37,15 @@ class LoginViewModel(private val loginRepo: LoginRepository) : ViewModel() {
 
     fun register(username: String, password: String, surePassword: String): MutableLiveData<User> {
         viewModelScope.launch {
-            val user = loginRepo.register(username, password,surePassword)
+            val user = loginRepo.register(username, password, surePassword)
             if (user is NetResult.Success) {
                 loginLiveData.postValue(user.data)
             } else if (user is NetResult.Error) {
-//                Toast.makeText(, "", Toast.LENGTH_SHORT).show();
+                Toast.makeText(
+                    BaseContext.instance.getContext(),
+                    user.exception.msg,
+                    Toast.LENGTH_LONG
+                ).show()
             }
 
         }

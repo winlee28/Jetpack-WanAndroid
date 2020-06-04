@@ -1,10 +1,12 @@
 package com.win.ft_home.ui.home
 
+import android.widget.Toast
 import androidx.lifecycle.viewModelScope
 import androidx.paging.DataSource
 import androidx.paging.PageKeyedDataSource
 import com.win.lib_base.base.AbsListViewModel
 import com.win.lib_base.model.DatasBean
+import com.win.lib_base.utils.BaseContext
 import com.win.lib_net.model.NetResult
 import kotlinx.coroutines.launch
 import java.util.*
@@ -54,7 +56,11 @@ class HomeListViewModel(private val repository: HomeRepository) : AbsListViewMod
             if (homeFeed is NetResult.Success) {
                 callback.onResult(homeFeed.data.datas, null, 1)
             } else if (homeFeed is NetResult.Error) {
-//                Toast.makeText(App.CONTEXT, homeFeed.exception.msg, Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    BaseContext.instance.getContext(),
+                    homeFeed.exception.msg,
+                    Toast.LENGTH_LONG
+                ).show()
             }
         }
     }
@@ -71,7 +77,11 @@ class HomeListViewModel(private val repository: HomeRepository) : AbsListViewMod
             if (homeFeed is NetResult.Success) {
                 callback.onResult(homeFeed.data.datas, key)
             } else if (homeFeed is NetResult.Error) {
-//                Toast.makeText(App.CONTEXT, homeFeed.exception.msg, Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    BaseContext.instance.getContext(),
+                    homeFeed.exception.msg,
+                    Toast.LENGTH_LONG
+                ).show()
             }
         }
     }

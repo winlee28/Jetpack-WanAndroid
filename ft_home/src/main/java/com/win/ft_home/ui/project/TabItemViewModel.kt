@@ -1,10 +1,12 @@
 package com.win.ft_home.ui.project
 
+import android.widget.Toast
 import androidx.lifecycle.viewModelScope
 import androidx.paging.DataSource
 import androidx.paging.PageKeyedDataSource
 import com.win.ft_home.model.project.ProjectItemSub
 import com.win.lib_base.base.AbsListViewModel
+import com.win.lib_base.utils.BaseContext
 import com.win.lib_net.model.NetResult
 import kotlinx.coroutines.launch
 import java.util.*
@@ -57,7 +59,11 @@ class TabItemViewModel(private val repository: ProjectRepository) :
             if (data is NetResult.Success) {
                 callback.onResult(data.data.datas, count + 1)
             } else if (data is NetResult.Error) {
-                // Toast.makeText(, "", Toast.LENGTH_SHORT).show();
+                Toast.makeText(
+                    BaseContext.instance.getContext(),
+                    data.exception.msg,
+                    Toast.LENGTH_LONG
+                ).show()
             }
         }
     }
@@ -71,7 +77,11 @@ class TabItemViewModel(private val repository: ProjectRepository) :
             if (data is NetResult.Success) {
                 callback.onResult(data.data.datas, 0, 2)
             } else if (data is NetResult.Error) {
-                //Toast.makeText(, "", Toast.LENGTH_SHORT).show();
+                Toast.makeText(
+                    BaseContext.instance.getContext(),
+                    data.exception.msg,
+                    Toast.LENGTH_LONG
+                ).show()
             }
         }
     }

@@ -22,8 +22,7 @@ object LoginServiceImplWrap {
         ARouter.getInstance().inject(this)
     }
 
-    fun isLogin(v:Int): Boolean {
-        Log.e("liwen","======$v")
+    fun isLogin(): Boolean {
         return service.isLogin()
     }
 

@@ -19,7 +19,9 @@ class MineFragment : BaseFragment<MineViewModel, FragmentMineBinding>() {
     override fun initView() {
 
         mViewBinding.name.setOnClickListener {
-            LoginServiceImplWrap.start(requireContext())
+            if (!LoginServiceImplWrap.isLogin()) {
+                LoginServiceImplWrap.start(requireContext())
+            }
         }
 
         LoginServiceImplWrap.getLiveData().observe(this, Observer { user ->

@@ -13,19 +13,19 @@ import com.win.lib_net.net.RetrofitClient
 class SearchRepository(private val service: RetrofitClient) : BaseRepository() {
 
     suspend fun getHotKey(): NetResult<MutableList<HotKeyModel>> {
-        return safeApiCall(call = { requestHotKey() })
+        return callRequest(call = { requestHotKey() })
     }
 
     suspend fun search(page: Int, key: String): NetResult<SearchResultModel> {
-        return safeApiCall(call = { requestSearch(page, key) })
+        return callRequest(call = { requestSearch(page, key) })
     }
 
     private suspend fun requestHotKey() =
-        executeResponse(service.create(RequestCenter::class.java).getHotKey())
+        handleResponse(service.create(RequestCenter::class.java).getHotKey())
 
 
     private suspend fun requestSearch(page: Int, key: String) =
-        executeResponse(service.create(RequestCenter::class.java).search(page, key))
+        handleResponse(service.create(RequestCenter::class.java).search(page, key))
 
 
 }

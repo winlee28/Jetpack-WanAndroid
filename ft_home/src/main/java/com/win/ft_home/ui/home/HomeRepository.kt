@@ -13,18 +13,18 @@ import com.win.lib_net.model.NetResult
 class HomeRepository(private val service: RetrofitClient) : BaseRepository() {
 
     suspend fun getBanner(): NetResult<List<Banner>> {
-        return safeApiCall(call = { requestBanner() })
+        return callRequest(call = { requestBanner() })
     }
 
     suspend fun getHomeList(count: Int): NetResult<DataFeed> {
-        return safeApiCall(call = { requestHomeList(count) })
+        return callRequest(call = { requestHomeList(count) })
     }
 
     private suspend fun requestBanner() =
-        executeResponse(service.create(RequestCenter::class.java).getBanner())
+        handleResponse(service.create(RequestCenter::class.java).getBanner())
 
     private suspend fun requestHomeList(count: Int) =
-        executeResponse(
+        handleResponse(
             service.create(RequestCenter::class.java).getHomeList(count)
         )
 

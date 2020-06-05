@@ -14,19 +14,19 @@ class ProjectRepository(private val service: RetrofitClient) : BaseRepository() 
 
 
     suspend fun getTabData(): NetResult<MutableList<ProjectTabItem>> {
-        return safeApiCall(call = { requestTabData() })
+        return callRequest(call = { requestTabData() })
     }
 
     private suspend fun requestTabData() =
-        executeResponse(service.create(RequestCenter::class.java).getTabData())
+        handleResponse(service.create(RequestCenter::class.java).getTabData())
 
 
     suspend fun getTabItemPageData(count: Int, id: Int): NetResult<ProjectPageItem> {
-        return safeApiCall(call = { requestTabItemPageData(count, id) })
+        return callRequest(call = { requestTabItemPageData(count, id) })
     }
 
     private suspend fun requestTabItemPageData(count: Int, id: Int) =
-        executeResponse(
+        handleResponse(
            service.create(RequestCenter::class.java).getTabItemPageData(count, id)
         )
 }

@@ -12,7 +12,7 @@ import com.win.lib_net.net.RetrofitClient
 class LoginRepository(private val service: RetrofitClient) : BaseRepository() {
 
     suspend fun login(username: String, password: String): NetResult<User> {
-        return safeApiCall(call = { requestLogin(username, password) })
+        return callRequest(call = { requestLogin(username, password) })
     }
 
     suspend fun register(
@@ -20,11 +20,11 @@ class LoginRepository(private val service: RetrofitClient) : BaseRepository() {
         password: String,
         surePassword: String
     ): NetResult<User> {
-        return safeApiCall(call = { requestRegister(username, password, surePassword) })
+        return callRequest(call = { requestRegister(username, password, surePassword) })
     }
 
     private suspend fun requestLogin(username: String, password: String): NetResult<User> =
-        executeResponse(
+        handleResponse(
             service.create(RequestCenter::class.java).login(username, password)
         )
 
@@ -33,7 +33,7 @@ class LoginRepository(private val service: RetrofitClient) : BaseRepository() {
         password: String,
         surePassword: String
     ): NetResult<User> =
-        executeResponse(
+        handleResponse(
             service.create(RequestCenter::class.java).register(username, password, surePassword)
         )
 

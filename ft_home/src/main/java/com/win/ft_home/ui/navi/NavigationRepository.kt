@@ -12,10 +12,10 @@ import com.win.lib_net.net.RetrofitClient
 class NavigationRepository(private val service: RetrofitClient) : BaseRepository() {
 
     suspend fun getNavigationData(): NetResult<MutableList<NavigationItem>> {
-        return safeApiCall(call = { requestNavigationData() })
+        return callRequest(call = { requestNavigationData() })
     }
 
     private suspend fun requestNavigationData(): NetResult<MutableList<NavigationItem>> =
-        executeResponse(service.create(RequestCenter::class.java).getNavigationData())
+        handleResponse(service.create(RequestCenter::class.java).getNavigationData())
 
 }

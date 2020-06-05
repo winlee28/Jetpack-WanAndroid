@@ -13,11 +13,11 @@ class TreeDetailRepository(private val service: RetrofitClient) : BaseRepository
 
     suspend fun getTreeDetailList(count: Int, cid: Int): NetResult<TreeDetailModel> {
 
-        return safeApiCall(call = { requestTreeDetailList(count, cid) })
+        return callRequest(call = { requestTreeDetailList(count, cid) })
     }
 
     private suspend fun requestTreeDetailList(count: Int, cid: Int) =
-        executeResponse(
+        handleResponse(
             service.create(ReqeustCenter::class.java).getTreeDetailList(count, cid)
         )
 }

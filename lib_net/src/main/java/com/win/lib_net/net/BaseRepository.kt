@@ -10,7 +10,7 @@ import com.win.lib_net.model.NetResult
 
 open class BaseRepository {
 
-    suspend fun <T : Any> safeApiCall(
+    suspend fun <T : Any> callRequest(
         call: suspend () -> NetResult<T>
     ): NetResult<T> {
         return try {
@@ -22,7 +22,7 @@ open class BaseRepository {
         }
     }
 
-    suspend fun <T : Any> executeResponse(
+    suspend fun <T : Any> handleResponse(
         response: BaseModel<T>,
         successBlock: (suspend CoroutineScope.() -> Unit)? = null,
         errorBlock: (suspend CoroutineScope.() -> Unit)? = null

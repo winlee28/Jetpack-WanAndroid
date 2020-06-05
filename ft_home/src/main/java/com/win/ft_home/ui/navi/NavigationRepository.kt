@@ -9,13 +9,13 @@ import com.win.lib_net.net.RetrofitClient
 /**
  * Create by liwen on 2020/5/28
  */
-class NavigationRepository : BaseRepository() {
+class NavigationRepository(private val service: RetrofitClient) : BaseRepository() {
 
     suspend fun getNavigationData(): NetResult<MutableList<NavigationItem>> {
         return safeApiCall(call = { requestNavigationData() })
     }
 
     private suspend fun requestNavigationData(): NetResult<MutableList<NavigationItem>> =
-        executeResponse(RetrofitClient.getService(RequestCenter::class.java).getNavigationData())
+        executeResponse(service.create(RequestCenter::class.java).getNavigationData())
 
 }

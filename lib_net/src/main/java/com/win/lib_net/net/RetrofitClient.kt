@@ -1,54 +1,58 @@
 package com.win.lib_net.net
 
 
-import com.win.lib_net.net.BaseRetrofitClient
+import com.win.lib_net.BuildConfig
+import com.win.lib_net.interceptor.CommonInterceptor
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 
-/**
- * Created by luyao
- * on 2018/3/13 15:45
- */
-object RetrofitClient : BaseRetrofitClient() {
+class RetrofitClient private constructor() {
 
-    override fun handleBuilder(builder: OkHttpClient.Builder) {
+    private var retrofit: Retrofit
+
+    companion object {
+        val instance: RetrofitClient by lazy { RetrofitClient() }
+    }
+
+
+    init {
+
+        retrofit = Retrofit.Builder()
+            .client(initClient())
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl("https://www.wanandroid.com")
+            .build()
 
     }
 
-//    val service by lazy { getService(ApiService::class.java, ApiService.BASE_URL) }
+    private fun initClient(): OkHttpClient {
 
-//    private val cookieJar by lazy { PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(App.CONTEXT)) }
+        return OkHttpClient.Builder()
+            .addInterceptor(initLogInterceptor())
+            .addInterceptor(CommonInterceptor())
+            .connectTimeout(10, TimeUnit.SECONDS)
+            .readTimeout(10, TimeUnit.SECONDS)
+            .build()
+    }
 
-//    override fun handleBuilder(builder: OkHttpClient.Builder) {
+    private fun initLogInterceptor(): HttpLoggingInterceptor {
+        val loggingInterceptor = HttpLoggingInterceptor()
+        if (BuildConfig.DEBUG) {
+            loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+        } else {
+            loggingInterceptor.level = HttpLoggingInterceptor.Level.BASIC
+        }
+        return loggingInterceptor
+    }
 
-//        val httpCacheDirectory = File(App.CONTEXT.cacheDir, "responses")
-//        val cacheSize = 10 * 1024 * 1024L // 10 MiB
-//        val cache = Cache(httpCacheDirectory, cacheSize)
-//        builder
-//            .cache(cache)
-//                .cookieJar(cookieJar)
-//            .addInterceptor { chain ->
-//                var request = chain.request()
-//                if (!NetWorkUtils.isNetworkAvailable(App.CONTEXT)) {
-//                    request = request.newBuilder()
-//                        .cacheControl(CacheControl.FORCE_CACHE)
-//                        .build()
-//                }
-//                val response = chain.proceed(request)
-//                if (!NetWorkUtils.isNetworkAvailable(App.CONTEXT)) {
-//                    val maxAge = 60 * 60
-//                    response.newBuilder()
-//                        .removeHeader("Pragma")
-//                        .header("Cache-Control", "public, max-age=$maxAge")
-//                        .build()
-//                } else {
-//                    val maxStale = 60 * 60 * 24 * 28 // tolerate 4-weeks stale
-//                    response.newBuilder()
-//                        .removeHeader("Pragma")
-//                        .header("Cache-Control", "public, only-if-cached, max-stale=$maxStale")
-//                        .build()
-//                }
-//                response
-//            }
-//    }
+
+    fun <T> create(service: Class<T>): T {
+        return retrofit.create(service)
+    }
+
+
 }

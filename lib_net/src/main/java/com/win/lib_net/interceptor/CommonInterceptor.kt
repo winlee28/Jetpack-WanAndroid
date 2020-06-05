@@ -15,7 +15,6 @@ class CommonInterceptor : Interceptor {
         val builder = addHeaders(request.newBuilder())
         val response = chain.proceed(builder)
 
-
         return response
 
     }

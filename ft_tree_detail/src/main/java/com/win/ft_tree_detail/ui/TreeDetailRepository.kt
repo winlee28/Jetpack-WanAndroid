@@ -9,16 +9,15 @@ import com.win.lib_net.net.RetrofitClient
 /**
  * Create by liwen on 2020-05-21
  */
-class TreeDetailRepository : BaseRepository() {
-
+class TreeDetailRepository(private val service: RetrofitClient) : BaseRepository() {
 
     suspend fun getTreeDetailList(count: Int, cid: Int): NetResult<TreeDetailModel> {
 
-        return safeApiCall(call = { requestTreeDetailLsit(count, cid) })
+        return safeApiCall(call = { requestTreeDetailList(count, cid) })
     }
 
-    private suspend fun requestTreeDetailLsit(count: Int, cid: Int) =
+    private suspend fun requestTreeDetailList(count: Int, cid: Int) =
         executeResponse(
-            RetrofitClient.getService(ReqeustCenter::class.java).getTreeDetailList(count, cid)
+            service.create(ReqeustCenter::class.java).getTreeDetailList(count, cid)
         )
 }

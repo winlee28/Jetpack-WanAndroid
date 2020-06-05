@@ -12,7 +12,7 @@ import org.koin.dsl.module
 
 val loginRepoModule = module {
     single {
-        LoginRepository()
+        LoginRepository(get())
     }
 }
 

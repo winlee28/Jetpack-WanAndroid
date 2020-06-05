@@ -8,15 +8,26 @@ import com.win.ft_search.di.searchRepoModule
 import com.win.ft_search.di.searchViewModelModule
 import com.win.ft_tree_detail.di.detailRepoModule
 import com.win.ft_tree_detail.di.detailViewModelModule
+import com.win.lib_net.net.RetrofitClient
+import org.koin.dsl.module
 
 /**
  * Create by liwen on 2020/5/25
  */
 
+
+var retrofitModule = module {
+    single {
+        RetrofitClient.instance
+    }
+}
+
+
 val allModule = listOf(
     treeRepoModule, treeViewModelModule,
     detailRepoModule, detailViewModelModule,
     loginRepoModule, loginViewModelModule,
-    searchRepoModule,searchViewModelModule
+    searchRepoModule, searchViewModelModule,
+    retrofitModule
 
 )

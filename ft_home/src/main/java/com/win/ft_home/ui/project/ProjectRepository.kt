@@ -10,7 +10,7 @@ import com.win.lib_net.net.RetrofitClient
 /**
  * Create by liwen on 2020/5/26
  */
-class ProjectRepository : BaseRepository() {
+class ProjectRepository(private val service: RetrofitClient) : BaseRepository() {
 
 
     suspend fun getTabData(): NetResult<MutableList<ProjectTabItem>> {
@@ -18,7 +18,7 @@ class ProjectRepository : BaseRepository() {
     }
 
     private suspend fun requestTabData() =
-        executeResponse(RetrofitClient.getService(RequestCenter::class.java).getTabData())
+        executeResponse(service.create(RequestCenter::class.java).getTabData())
 
 
     suspend fun getTabItemPageData(count: Int, id: Int): NetResult<ProjectPageItem> {
@@ -27,6 +27,6 @@ class ProjectRepository : BaseRepository() {
 
     private suspend fun requestTabItemPageData(count: Int, id: Int) =
         executeResponse(
-            RetrofitClient.getService(RequestCenter::class.java).getTabItemPageData(count, id)
+           service.create(RequestCenter::class.java).getTabItemPageData(count, id)
         )
 }

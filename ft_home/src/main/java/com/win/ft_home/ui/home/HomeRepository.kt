@@ -10,7 +10,7 @@ import com.win.lib_net.model.NetResult
 /**
  * Create by liwen on 2020-05-18
  */
-class HomeRepository : BaseRepository() {
+class HomeRepository(private val service: RetrofitClient) : BaseRepository() {
 
     suspend fun getBanner(): NetResult<List<Banner>> {
         return safeApiCall(call = { requestBanner() })
@@ -21,10 +21,12 @@ class HomeRepository : BaseRepository() {
     }
 
     private suspend fun requestBanner() =
-        executeResponse(RetrofitClient.getService(RequestCenter::class.java).getBanner())
+        executeResponse(service.create(RequestCenter::class.java).getBanner())
 
     private suspend fun requestHomeList(count: Int) =
-        executeResponse(RetrofitClient.getService(RequestCenter::class.java).getHomeList(count))
+        executeResponse(
+            service.create(RequestCenter::class.java).getHomeList(count)
+        )
 
 
 }

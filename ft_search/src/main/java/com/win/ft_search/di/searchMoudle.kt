@@ -13,7 +13,7 @@ import org.koin.dsl.module
 
 val searchRepoModule = module {
     single {
-        SearchRepository()
+        SearchRepository(get())
     }
 }
 

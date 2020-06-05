@@ -10,7 +10,7 @@ import org.koin.dsl.module
  */
 val detailRepoModule = module {
     factory {
-        TreeDetailRepository()
+        TreeDetailRepository(get())
     }
 }
 

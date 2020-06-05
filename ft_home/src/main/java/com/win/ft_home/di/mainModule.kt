@@ -21,10 +21,10 @@ import org.koin.dsl.module
  */
 
 val treeRepoModule = module {
-    factory { TreeRepository() }
-    factory { HomeRepository() }
-    factory { ProjectRepository() }
-    factory { NavigationRepository() }
+    single { TreeRepository(get()) }
+    single { HomeRepository(get()) }
+    single { ProjectRepository(get()) }
+    single { NavigationRepository(get()) }
 }
 
 

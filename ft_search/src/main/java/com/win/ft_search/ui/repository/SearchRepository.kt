@@ -10,7 +10,7 @@ import com.win.lib_net.net.RetrofitClient
 /**
  * Create by liwen on 2020/6/1
  */
-class SearchRepository : BaseRepository() {
+class SearchRepository(private val service: RetrofitClient) : BaseRepository() {
 
     suspend fun getHotKey(): NetResult<MutableList<HotKeyModel>> {
         return safeApiCall(call = { requestHotKey() })
@@ -21,11 +21,11 @@ class SearchRepository : BaseRepository() {
     }
 
     private suspend fun requestHotKey() =
-        executeResponse(RetrofitClient.getService(RequestCenter::class.java).getHotKey())
+        executeResponse(service.create(RequestCenter::class.java).getHotKey())
 
 
     private suspend fun requestSearch(page: Int, key: String) =
-        executeResponse(RetrofitClient.getService(RequestCenter::class.java).search(page, key))
+        executeResponse(service.create(RequestCenter::class.java).search(page, key))
 
 
 }

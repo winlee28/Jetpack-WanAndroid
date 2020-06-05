@@ -9,13 +9,13 @@ import com.win.lib_net.net.RetrofitClient
 /**
  * Create by liwen on 2020-05-21
  */
-class TreeRepository : BaseRepository() {
+class TreeRepository(private val service: RetrofitClient) : BaseRepository() {
 
     suspend fun getTreeList(): NetResult<MutableList<TreeData>> {
         return safeApiCall(call = { requestTreeList() })
     }
 
     private suspend fun requestTreeList() =
-        executeResponse(RetrofitClient.getService(RequestCenter::class.java).getTreeList())
+        executeResponse(service.create(RequestCenter::class.java).getTreeList())
 
 }

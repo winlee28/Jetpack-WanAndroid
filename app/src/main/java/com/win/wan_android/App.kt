@@ -13,7 +13,6 @@ import org.koin.core.context.startKoin
  */
 class App : Application() {
 
-
     override fun onCreate() {
         super.onCreate()
 
@@ -22,7 +21,6 @@ class App : Application() {
         MMKV.initialize(this)
 
         startKoin {
-
             androidContext(this@App)
             modules(allModule)
         }

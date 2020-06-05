@@ -10,10 +10,6 @@ import com.win.lib_net.model.NetResult
 
 open class BaseRepository {
 
-    suspend fun <T : Any> apiCall(call: suspend () -> BaseModel<T>): BaseModel<T> {
-        return call.invoke()
-    }
-
     suspend fun <T : Any> safeApiCall(
         call: suspend () -> NetResult<T>
     ): NetResult<T> {

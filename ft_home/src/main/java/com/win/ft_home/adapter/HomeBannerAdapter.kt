@@ -23,7 +23,7 @@ class HomeBannerAdapter(mDatas: List<Banner>)//设置数据，也可以调用ban
     }
 
     override fun onBindView(holder: BannerViewHolder, data: Banner, position: Int, size: Int) {
-        ImageLoaderManager.getInstance().displayImageForView(holder.imageView, data.imagePath)
+        ImageLoaderManager.instance.displayImageForView(holder.imageView, data.imagePath)
     }
 
     inner class BannerViewHolder(var imageView: ImageView) :

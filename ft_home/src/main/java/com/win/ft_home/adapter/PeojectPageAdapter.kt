@@ -62,7 +62,7 @@ class PeojectPageAdapter constructor(context: Context) :
         fun setData(item: ProjectItemSub?) {
             mBinding.itemData = item
             mBinding.context = mContext
-            ImageLoaderManager.getInstance()
+            ImageLoaderManager.instance
                 .displayImageForView(mBinding.pic, item!!.envelopePic)
 
 //            Glide.with(mContext).asBitmap()

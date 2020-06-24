@@ -1,14 +1,12 @@
 package com.win.ft_home.ui.navi
 
-import android.os.Bundle
-import android.util.Log
-import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
+import com.google.gson.Gson
 import com.win.ft_home.R
 import com.win.ft_home.`interface`.NavigationTabItemSelectedListener
 import com.win.ft_home.adapter.NavigationTabAdapter
@@ -17,8 +15,11 @@ import com.win.ft_home.model.navigation.NavigationItem
 import com.win.lib_base.base.BaseFragment
 import com.win.lib_base.service.search.wrap.SearchWrapService
 import com.win.lib_base.utils.DensityUtil
+import org.koin.android.ext.android.get
 
 class NavigationFragment : BaseFragment<NavigationViewModel, FragmentNavigationBinding>() {
+
+    private val gson = get<Gson>()
 
     private var LAST_ITEM_COUNT_LIMIT: Int = 0
     private var TAB_ITEM_OFFSET_TOP: Int = DensityUtil.dip2px(50f)
@@ -99,7 +100,7 @@ class NavigationFragment : BaseFragment<NavigationViewModel, FragmentNavigationB
                 }
 
                 override fun createFragment(position: Int): Fragment {
-                    return NavigationDataPageFragment.newInstance(item[position].articles)
+                    return NavigationDataPageFragment.newInstance(item[position].articles,gson)
                 }
 
             }

@@ -1,5 +1,7 @@
 package com.win.wan_android.di
 
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.win.ft_home.di.treeRepoModule
 import com.win.ft_home.di.treeViewModelModule
 import com.win.ft_login.di.loginRepoModule
@@ -16,18 +18,23 @@ import org.koin.dsl.module
  */
 
 
-var retrofitModule = module {
+val otherModule = module {
+
     single {
         RetrofitClient.instance
+    }
+
+    single {
+        GsonBuilder().disableHtmlEscaping().create()
     }
 }
 
 
 val allModule = listOf(
+    otherModule,
     treeRepoModule, treeViewModelModule,
     detailRepoModule, detailViewModelModule,
     loginRepoModule, loginViewModelModule,
-    searchRepoModule, searchViewModelModule,
-    retrofitModule
+    searchRepoModule, searchViewModelModule
 
 )

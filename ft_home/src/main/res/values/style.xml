@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Theme.Splash" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/lanucher</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+
+    <style name="editTextControl" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">#999999</item>
+        <item name="colorControlActivated">#2f76fb</item>
+    </style>
+
+</resources>

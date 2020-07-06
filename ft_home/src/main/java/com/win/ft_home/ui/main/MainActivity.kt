@@ -1,20 +1,16 @@
 package com.win.ft_home.ui.main
 
 import android.os.Bundle
-import android.util.Log
-import android.view.MenuItem
-import androidx.core.view.iterator
-import androidx.navigation.*
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.onNavDestinationSelected
+import androidx.navigation.get
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.win.ft_home.R
 import com.win.ft_home.databinding.ActivityMainBinding
 import com.win.lib_base.base.BaseActivity
 import com.win.lib_base.base.FixFragmentNavigator
-import com.win.lib_base.service.login.warp.LoginServiceImplWrap
 
 class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
 
@@ -24,14 +20,9 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
     override fun getLayoutResId(): Int = R.layout.activity_main
 
     override fun onCreate(savedInstanceState: Bundle?) {
+//        setTheme(R.style.AppTheme)
+        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
-
-//        val navView: BottomNavigationView = mViewBinding.navView
-
-//        navController = findNavController(R.id.nav_host_fragment)
-//
-//        navView.setupWithNavController(navController)
-
 
         navView = mViewBinding.navView
 

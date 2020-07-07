@@ -81,6 +81,7 @@ dependencies {
     implementation project(":ft_tree_detail")
     implementation project(":ft_login")
     implementation project(":ft_search")
+    implementation project(":ft_about_us")
 
     implementation project(":lib_base")
     implementation project(":lib_net")

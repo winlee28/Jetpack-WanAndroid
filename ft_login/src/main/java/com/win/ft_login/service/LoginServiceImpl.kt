@@ -1,9 +1,9 @@
-package com.win.ft_login
+package com.win.ft_login.service
 
 import android.content.Context
 import androidx.lifecycle.LiveData
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.win.ft_login.ui.LoginActivity
+import com.win.ft_login.UserManager
 import com.win.lib_base.model.User
 import com.win.lib_base.service.ConstantsPath
 import com.win.lib_base.service.login.LoginService

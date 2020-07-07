@@ -1,3 +1,4 @@
+include ':ft_about_us'
 include ':app', ':lib_base', ':lib_image_loader', ':lib_net', ':ft_home', ':lib_common_ui', ':ft_tree_detail'
 rootProject.name='Wan-Android'
 include ':lib_webview'

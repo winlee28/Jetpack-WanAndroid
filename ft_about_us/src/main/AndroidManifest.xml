@@ -1,0 +1,7 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.win.ft_about_us">
+
+    <application>
+        <activity android:name=".ui.AboutUsActivity" />
+    </application>
+</manifest>

@@ -20,7 +20,6 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
     override fun getLayoutResId(): Int = R.layout.activity_main
 
     override fun onCreate(savedInstanceState: Bundle?) {
-//        setTheme(R.style.AppTheme)
         setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
 

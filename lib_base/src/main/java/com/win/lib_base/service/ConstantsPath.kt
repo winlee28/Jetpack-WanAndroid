@@ -25,4 +25,9 @@ object ConstantsPath {
      * 搜索
      */
     const val SEARCH_SERVICE_PATH = "/search/search_service"
+
+    /**
+     * 关于我们
+     */
+    const val ABOUT_US_SERVICE_PATH = "/aboutUs/aboutUs_service"
 }

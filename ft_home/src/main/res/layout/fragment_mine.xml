@@ -85,7 +85,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-
+            android:id="@+id/about_us"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="1dp"

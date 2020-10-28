@@ -12,5 +12,5 @@
 /captures
 .externalNativeBuild
 .cxx
-/buildSrc/build
-/buildSrc/.gradle
+/buildSrc/build/
+/buildSrc/.gradle/

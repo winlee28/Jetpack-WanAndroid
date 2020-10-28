@@ -1,1 +1,1 @@
-/Users/ppd-03020339/jetpack/wan-android/buildSrc/build/classes/kotlin/main/Libs.class:/Users/ppd-03020339/jetpack/wan-android/buildSrc/build/classes/kotlin/main/Versions.class
+/Users/liwen/github/Jetpack-WanAndroid/buildSrc/build/classes/kotlin/main/Libs.class:/Users/liwen/github/Jetpack-WanAndroid/buildSrc/build/classes/kotlin/main/Versions.class
